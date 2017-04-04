@@ -8,6 +8,7 @@ using namespace std;
 struct data1
 {
 	vector<vector<int>> d;
+	
 };
 struct labels
 {
@@ -52,12 +53,18 @@ template<typename T>
 concept bool Data=requires(T t)
 {
 	typename T::data_type;
+	{ t.value() } -> typename T::data_type;
+}&& requires(T v, typename T::data_type x) {
+        { v.value(x) } // set value to x
 };
 
 template<typename T>
 concept bool Labels=requires(T t)
 {
 	typename T::label_type;
+	{ t.value() } -> typename T::label_type;
+}&& requires(T v, typename T::label_type x) {
+        { v.value(x) } // set value to x
 };
 
 template<typename T>
@@ -74,9 +81,10 @@ concept bool Classification =  requires()
 		classify(t,d);
 };
 
-void check(Classification &x)
+void check(Classification &x,Data &md,Labels &ml)
 {
-	cout<<"Check the classifier";
+	cout<<"Check the classifier\n";
+	train(x,md,ml);
 }
 
 

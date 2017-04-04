@@ -8,11 +8,18 @@ using namespace std;
 struct My_Data
 {
 using data_type=data1;
+data1 val;
+
+data_type value() const { return val; }
+void value(const data_type& v){val=v;};
 };
 
 struct My_Label
 {
 	using label_type=labels;
+	labels val;
+	label_type value() const {return val;}
+	void value(const label_type& v){val=v;};
 };
 
 struct Perceptron
@@ -24,6 +31,7 @@ public:
 	using Data_type=My_Data;
 	using Label_type=My_Label;
 
+
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
@@ -31,9 +39,9 @@ public:
 };
 void train(Perceptron &p,My_Data &x,My_Label &y)
 	{
-		cout<<"train the model";
+		cout<<"train the model\n";
 	};
 	void classify(Perceptron &p,My_Data &x)
 	{
-		cout<<"yo";
+		cout<<"classify the data\n";
 	};
