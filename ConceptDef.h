@@ -5,16 +5,23 @@
 
 using namespace std;
 
+struct data1
+{
+	vector<vector<int>> d;
+};
+struct labels
+{
+	vector<int> l;
+};
 
 
-
-template<class T> concept bool Data=requires(T t){
+/*template<class T> concept bool Data=requires(T t){
 	typename T::datatype;
 
 };
 template<class T> concept bool Labels=requires(T t) {
 	typename T::labelstype;
-};
+};*/
 /*template<typename T> concept bool Regression=//requires() {
 //typename T::dataforreg;
 //typename T::labelforreg;
@@ -40,18 +47,33 @@ template<typename T,typename Data,typename Inputstream> concept bool OnlineLearn
 t.train(a);
 t.classify(d);
 };*/
+
 template<typename T>
-concept bool Classification = requires()
-	{ 
-		typename T::datatype;
-		typename T::labelstype;
-		requires Data<typename T::datatype>;
-		requires Labels<typename T::labelstype>;
-	}&& requires(T t,typename T::datatype d,typename T::labelstype l)
+concept bool Data=requires(T t)
+{
+	typename T::data_type;
+};
+
+template<typename T>
+concept bool Labels=requires(T t)
+{
+	typename T::label_type;
+};
+
+template<typename T>
+concept bool Classification =  requires()
 	{
-		train(t,d,l);
+
+		typename T::Data_type;
+		typename T::Label_type;
+		requires Data<typename T::Data_type>;
+		requires Labels<typename T::Label_type>;
+		
+}&&requires(T t, typename T::Data_type d,typename T::Label_type l){
+	train(t,d,l);
 		classify(t,d);
 };
+
 void check(Classification &x)
 {
 	cout<<"Check the classifier";
