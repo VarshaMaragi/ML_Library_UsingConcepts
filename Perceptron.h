@@ -8,7 +8,7 @@ using namespace std;
 struct My_Data
 {
 using data_type=data1;
-data1 val;
+data_type val;
 
 data_type value() const { return val; }
 void value(const data_type& v){val=v;};
@@ -17,7 +17,7 @@ void value(const data_type& v){val=v;};
 struct My_Label
 {
 	using label_type=labels;
-	labels val;
+	label_type val;
 	label_type value() const {return val;}
 	void value(const label_type& v){val=v;};
 };
