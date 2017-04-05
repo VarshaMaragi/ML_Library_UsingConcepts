@@ -28,10 +28,18 @@ int main()
 		perceptronlabels.push_back(1);
 	}
 
-
-	//Creating a My_Data object
 	My_Data md;
+	md.val=perceptrondata;
+	cout<<"First element of the training data  "<<md.value()[0][1]<<endl;
+
+	My_Label ml;
+	ml.val=perceptronlabels;
+	ml.value(ml.val);
+	cout<<"First element of the training label  "<<ml.value()[0]<<endl;
+	//Creating a My_Data object
+	/*My_Data md;
 	data1 dt;
+	
 	dt.d=perceptrondata;
 	
 	//Set the value
@@ -56,6 +64,6 @@ int main()
 	Perceptron p;
 
 	//check if it satisfies the classification concept
-	check(p,md,ml);
+	check(p,md,ml);*/
 	return 1;
 }

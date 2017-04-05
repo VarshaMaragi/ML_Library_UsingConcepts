@@ -4,8 +4,9 @@
 //#include "LinearRegression.h"
 
 using namespace std;
-
-struct data1
+using data1=vector<vector<int>>;
+using labels=vector<int>;
+/*struct data1
 {
 	vector<vector<int>> d;
 	
@@ -13,7 +14,7 @@ struct data1
 struct labels
 {
 	vector<int> l;
-};
+};*/
 
 
 /*template<class T> concept bool Data=requires(T t){
