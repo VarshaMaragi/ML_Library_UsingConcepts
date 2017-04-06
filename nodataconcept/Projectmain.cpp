@@ -13,7 +13,9 @@ int main()
 
 
 	//Creating a dummy dataset
-	for(int j=0;j<3;j++)
+	perceptrondata={{8,-11},{7,7},{12,-20},{14,-3},{12,8},{1,-12},{15,5},{7,-10}
+		,{10,4},{6,2},{8,12},{2,20},{1,-12},{9,8},{3,3},{5,6},{1,11}};
+	/*for(int j=0;j<3;j++)
 	{
 		vector<int> temp;
 		for(int i=0;i<10;i++)
@@ -21,12 +23,13 @@ int main()
 			temp.push_back(j+i);
 		}
 		perceptrondata.push_back(temp);
-	}
+	}*/
 	vector<int> perceptronlabels;
-	for(int i=0;i<3;i++)
+	perceptronlabels={1,-1,1,-1,-1,1,-1,1,-1,1,-1,-1,1,-1,1,1,1};
+	/*for(int i=0;i<3;i++)
 	{
 		perceptronlabels.push_back(1);
-	}
+	}*/
 
 
 	Perceptron p;
@@ -44,11 +47,11 @@ int main()
 	NaiveBayes nb;
 	nb.d=perceptrondata;
 	
-	cout<<"First element of the training data  "<<nb.d[2][1]<<endl;
+	cout<<"Element of the training data  "<<nb.d[2][1]<<endl;
 
 	nb.l=perceptronlabels;
 	
-	cout<<"First element of the training label  "<<nb.l[0]<<endl;
+	cout<<"Element of the training label  "<<nb.l[0]<<endl;
 
 	
 	check(p,p.d,p.l);
