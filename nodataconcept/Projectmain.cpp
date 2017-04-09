@@ -1,20 +1,35 @@
 #include<stdio.h>
 #include<iostream>
 #include "NaiveBayes.h"
-
+#include "parsecsv.h"
 using namespace std;
 
 int main()
 {
 
-
+	
 	
 	vector<vector<int>> perceptrondata;
-
-
+	vector<vector<string>> parseddata;
+	vector<int> perceptronlabels;
+	parseddata=parsefile("perceptroninput.csv");
+	for(int i=0;i<parseddata.size();i++)
+	{
+		perceptronlabels.push_back(stoi(parseddata[i][parseddata[0].size()-1]));
+	}
 	//Creating a dummy dataset
-	perceptrondata={{8,-11},{7,7},{12,-20},{14,-3},{12,8},{1,-12},{15,5},{7,-10}
-		,{10,4},{6,2},{8,12},{2,20},{1,-12},{9,8},{3,3},{5,6},{1,11}};
+
+	for(int i=0;i<parseddata.size();i++)
+	{
+		vector<int> temp;
+		for(int j=0;j<parseddata[0].size()-1;j++)
+		{
+			temp.push_back(stoi(parseddata[i][j]));
+		}
+		perceptrondata.push_back(temp);
+	}
+	/*perceptrondata={{8,-11},{7,7},{12,-20},{14,-3},{12,8},{1,-12},{15,5},{7,-10}
+		,{10,4},{6,2},{8,12},{2,20},{1,-12},{9,8},{3,3},{5,6},{1,11}};*/
 	/*for(int j=0;j<3;j++)
 	{
 		vector<int> temp;
@@ -24,8 +39,8 @@ int main()
 		}
 		perceptrondata.push_back(temp);
 	}*/
-	vector<int> perceptronlabels;
-	perceptronlabels={1,-1,1,-1,-1,1,-1,1,-1,1,-1,-1,1,-1,1,1,1};
+	
+	//perceptronlabels={1,-1,1,-1,-1,1,-1,1,-1,1,-1,-1,1,-1,1,1,1};
 	/*for(int i=0;i<3;i++)
 	{
 		perceptronlabels.push_back(1);
@@ -47,11 +62,11 @@ int main()
 	NaiveBayes nb;
 	nb.d=perceptrondata;
 	
-	cout<<"Element of the training data  "<<nb.d[2][1]<<endl;
+	cout<<"First element of the training data  "<<nb.d[2][1]<<endl;
 
 	nb.l=perceptronlabels;
 	
-	cout<<"Element of the training label  "<<nb.l[0]<<endl;
+	cout<<"First element of the training label  "<<nb.l[0]<<endl;
 
 	
 	check(p,p.d,p.l);
