@@ -88,6 +88,12 @@ void check(Classification &x,data1 &md,labels &ml)
 	train(x,md,ml);
 }
 
+void test(Classification &x,data1 &td)
+{
+	cout<<"Test the classifier\n";
+	classify(x,td);
+}
+
 
 
 

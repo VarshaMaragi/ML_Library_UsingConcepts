@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<iostream>
-#include "NaiveBayes.h"
+#include "KNN.h"
 #include "parsecsv.h"
 using namespace std;
 
@@ -68,10 +68,18 @@ int main()
 	
 	cout<<"First element of the training label  "<<nb.l[0]<<endl;
 
+	KNN knn;
+	knn.d=perceptrondata;
+	knn.l=perceptronlabels;
+
 	
 	check(p,p.d,p.l);
 	check(nb,nb.d,nb.l);
+	check(knn,knn.d,knn.l);
 
+	vector<vector<int>> knntestdata;
+	knntestdata={{8,-11},{14,-3}};
+	test(knn,knntestdata);
 	/*NB_Data nd;
 	nd.val=perceptrondata;
 
