@@ -6,7 +6,7 @@
 #include "Perceptron.h"
 using namespace std;
 
-struct NaiveBayes
+class NaiveBayes
 {
 public:
 
@@ -20,9 +20,7 @@ public:
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
-	
-};
-void train(NaiveBayes &p,data1 &x,labels &y)
+	void train(data1 &x,labels &y)
 	{
 		cout<<"train the model(NaiveBayes)\n";
 		cout<<"Inside naive bayes";
@@ -70,7 +68,10 @@ void train(NaiveBayes &p,data1 &x,labels &y)
 			cout<<it->second<<endl;it++;
 		}
 	};
-	void classify(NaiveBayes &p,data1 &x)
+	void classify(data1 &x)
 	{
 		cout<<"classify the data(NaiveBayes)\n";
 	};
+	
+};
+

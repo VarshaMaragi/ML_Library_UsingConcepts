@@ -9,7 +9,7 @@ using namespace std;
 #include <map>
 #include <math.h>
 
-struct KNN
+class KNN
 {
 public:
 
@@ -25,9 +25,7 @@ public:
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
-	
-};
-void train(KNN &p,data1 &x,labels &y)
+	void train(data1 &x,labels &y)
 	{
 		cout<<"Inside KNN";
 		/*ofstream f;
@@ -81,7 +79,8 @@ void train(KNN &p,data1 &x,labels &y)
 
 		cout<<"train the model\n";
 	};
-	void classify(KNN &p,data1 &testdata)
+
+	void classify(data1 &testdata)
 	{
 		cout<<"classify the data\n";
 		cout<<"Inside KNN classify";
@@ -154,3 +153,6 @@ void train(KNN &p,data1 &x,labels &y)
 
 
 	};
+	
+};
+

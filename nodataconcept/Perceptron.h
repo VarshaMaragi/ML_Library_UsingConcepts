@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<iostream>
 #include <iostream>
 #include <numeric>
 //#include "DataforClassification.h"
@@ -8,10 +7,9 @@
 using namespace std;
 #include <fstream>
 
-struct Perceptron
+class Perceptron
 {
 public:
-
 	//using datatype=data1;
 	//using labelstype=labels;
 
@@ -24,10 +22,7 @@ public:
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
-	
-};
-void train(Perceptron &p,data1 &x,labels &y)
-	{
+	void train(data1& x, labels& y) {
 		ofstream f;
 		f.open ("trainingweights.txt");
 		int numberoffeatures=x[0].size()+1;
@@ -71,15 +66,11 @@ void train(Perceptron &p,data1 &x,labels &y)
 			}
 			f<<weights[j]<<"\n";
 		}
-			
-
-
-
-
 
 		cout<<"train the model\n";
-	};
-	void classify(Perceptron &p,data1 &x)
-	{
+	}
+
+	void classify(data1& x) {
 		cout<<"classify the data\n";
-	};
+	}
+};
