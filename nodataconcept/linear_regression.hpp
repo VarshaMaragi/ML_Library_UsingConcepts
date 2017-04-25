@@ -39,6 +39,11 @@ public:
 	bool fit_intercept = 1;
 	vector<double> beta;
 
+	// Operations for saving and restoring the state of the regression
+	// after initial training.
+	friend std::ostream& operator<<(std::ostream& os, const LinearRegression& lr);
+	friend std::istream& operator>>(std::istream& is, LinearRegression& lr);
+
 	double obj(vector<double> beta,vector<vector<double>> x,vector<double> y)
 	{
 		return 0;
@@ -78,10 +83,9 @@ public:
 	
 	void train(vector<vector<double>>& train_data, vector<double>& train_labels)
 	{
-		vector<double> beta(train_data[0].size(), 0);
-		this->beta = beta;
+		beta.resize(train_data[0].size(), 0);
 
-		vector<double> p_beta(train_data[0].size(), 0);
+		//vector<double> p_beta(train_data[0].size(), 0);
 		int iter = 1;
 
 		// if (fit_intercept)
@@ -112,3 +116,33 @@ public:
 		// cout << this->beta << endl;
 	}
 };
+
+// Writes the state of the regression model out to an ostream
+std::ostream& operator<<(std::ostream& os, const LinearRegression& lr) {
+	// TODO: If alpha, maxIter and related properties are constants
+	// these first couple of lines can be omitted.
+	os << lr.alpha << ' ' << lr.maxIter << ' ' << lr.tol << ' ' << lr.fit_intercept;
+	os << std::endl;
+
+	for (const double& value : lr.beta) {
+		os << value << ' ';
+	}
+
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, LinearRegression& lr) {
+	// TODO: Again, if these are constants we can omit these
+	is >> lr.alpha;
+	is >> lr.maxIter;
+	is >> lr.tol;
+	is >> lr.fit_intercept;
+	
+	double d;
+	while (!is.eof()) {
+		is >> d;
+		lr.beta.push_back(d);
+	}
+
+	return is;
+}

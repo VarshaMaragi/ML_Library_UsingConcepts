@@ -46,5 +46,10 @@ for (int j = 1; j < nDimensions; j++)
 LinearRegression lr;
 cout << "Calling Linear Regression train" << endl;
 lr.train(train_data, train_labels);
+
+cout << "Saving regression data" << endl;
+std::ofstream state_out("lr_state.txt", std::ofstream::out);
+state_out << lr;
+state_out.close();
 // lr.regress(test_data)
 }

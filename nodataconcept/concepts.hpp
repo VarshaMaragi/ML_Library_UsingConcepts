@@ -6,8 +6,8 @@
 template<typename T>
 concept bool Serializable = requires(T t, std::istream& i, std::ostream& o)
 {
-	{ i >> t } -> std::istream&;
-	{ i << t } -> std::ostream&;
+	{ i >> t };
+	{ i << t };
 };
 
 template<typename T, typename D, typename L>

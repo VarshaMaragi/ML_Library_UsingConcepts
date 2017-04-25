@@ -9,6 +9,9 @@ using namespace std;
 
 class Perceptron
 {
+private:
+	vector<int> weights;
+
 public:
 	//using datatype=data1;
 	//using labelstype=labels;
@@ -25,11 +28,16 @@ public:
 	void train(data1& x, labels& y) {
 		ofstream f;
 		f.open ("trainingweights.txt");
+
+		// TODO: Need to make sure that every data entry
+		// has the same number of features and throw an
+		// exception if not.
 		int numberoffeatures=x[0].size()+1;
 		int numberofexamples=x.size();
-		vector<int> weights;
+
 		for(int i=0;i<numberoffeatures;i++)
 			weights.push_back(0);
+
 		for(int i=0;i<numberofexamples;i++)
 		{
 			x[i].insert(x[i].begin(),1);
