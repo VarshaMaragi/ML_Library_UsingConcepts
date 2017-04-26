@@ -9,6 +9,7 @@ using namespace std;
 #include <map>
 #include <math.h>
 
+namespace libml {
 class KNN
 {
 public:
@@ -27,7 +28,7 @@ public:
 	
 	void train(data1 &x,labels &y)
 	{
-		cout<<"Inside KNN";
+		std::cout<<"Inside KNN";
 		/*ofstream f;
 		f.open ("outputknn.txt");
 		int numberoffeatures=x[0].size()+1;
@@ -77,20 +78,20 @@ public:
 
 
 
-		cout<<"train the model\n";
+		std::cout<<"train the model\n";
 	};
 
 	void classify(data1 &testdata)
 	{
-		cout<<"classify the data\n";
-		cout<<"Inside KNN classify";
-		ofstream f;
+		std::cout<<"classify the data\n";
+		std::cout<<"Inside KNN classify";
+		std::ofstream f;
 		f.open ("outputknn.txt");
-		vector<vector<int>> x;
-		x=p.d;
+		std::vector<std::vector<int>> x;
+		//x=p.d; // FIXME: p is never defined!
 		int numberoffeatures=x[0].size();
 		int numberofexamples=x.size();
-		vector<int> weights;
+		std::vector<int> weights;
 		for(int i=0;i<numberoffeatures;i++)
 			weights.push_back(0);
 		
@@ -105,15 +106,15 @@ public:
 			cout<<endl;
 		}
 		
-		vector<int> predy;
-		vector<int> y=p.l;
+		std::vector<int> predy;
+		//std::vector<int> y=p.l; // FIXME: p is never defined!
 		for(int j=0;j<testdata.size();j++)
 		{
 			
-			vector<double> eucdist;
+			std::vector<double> eucdist;
 			for(int i=0;i<numberofexamples;i++)
 			{
-				vector<double> dist;
+				std::vector<double> dist;
 				std::transform(x[i].begin(), x[i].end(), testdata[j].begin(), std::back_inserter(dist),
     			[&](int a, int b) { return ((a-b)*(a-b)); });
 
@@ -122,21 +123,21 @@ public:
 
 
 			}
-			vector<pair<int,int>> p;
+			std::vector<pair<int,int>> p;
 			for(int i=0;i<eucdist.size();i++)
 			{
 				p.push_back(make_pair(eucdist[i], i));
 
 			}
 
-			sort(p.begin(),p.end());
+			std::sort(p.begin(),p.end());
 			//K=3 assumption
 			int classy=0;
 			for(int i=0;i<5;i++)
 			{
 				//cout<<"pi first"<<p[i].first<<endl;
 				//cout<<"pi"<<y[p[i].second]<<endl;
-				classy=classy+(y[p[i].second]);
+				//classy=classy+(y[p[i].second]); // FIXME: p is never defined!
 			}
 
 			//Assuming the classes are 1 and -1
@@ -155,4 +156,4 @@ public:
 	};
 	
 };
-
+} // namespace libml

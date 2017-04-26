@@ -3,27 +3,24 @@
 #include<vector>
 //#include "LinearRegression.h"
 
-using namespace std;
-using data1=vector<vector<int>>;
-using labels=vector<int>;
+namespace libml {
+using data1=std::vector<std::vector<int>>;
+using labels=std::vector<int>;
 /*struct data1
-{
-	vector<vector<int>> d;
-	
-};
-struct labels
-{
-	vector<int> l;
-};*/
-
+  {
+  vector<vector<int>> d;
+	  };
+  struct labels
+  {
+  vector<int> l;
+  };*/
 
 /*template<class T> concept bool Data=requires(T t){
-	typename T::datatype;
-
-};
-template<class T> concept bool Labels=requires(T t) {
-	typename T::labelstype;
-};*/
+  typename T::datatype;
+	  };
+  template<class T> concept bool Labels=requires(T t) {
+  typename T::labelstype;
+  };*/
 /*template<typename T> concept bool Regression=//requires() {
 //typename T::dataforreg;
 //typename T::labelforreg;
@@ -51,53 +48,45 @@ t.classify(d);
 };*/
 
 /*template<typename T>
-concept bool Data=requires(T t)
-{
-	typename T::data_type;
-	{ t.value() } -> typename T::data_type;
-}&& requires(T v, typename T::data_type x) {
-        { v.value(x) } // set value to x
-};
+  concept bool Data=requires(T t)
+  {
+  typename T::data_type;
+  { t.value() } -> typename T::data_type;
+  }&& requires(T v, typename T::data_type x) {
+  { v.value(x) } // set value to x
+  };
+
+  template<typename T>
+  concept bool Labels=requires(T t)
+  {
+  typename T::label_type;
+  { t.value() } -> typename T::label_type;
+  }&& requires(T v, typename T::label_type x) {
+  { v.value(x) } // set value to x
+  };*/
 
 template<typename T>
-concept bool Labels=requires(T t)
+concept bool Classification = requires()
 {
-	typename T::label_type;
-	{ t.value() } -> typename T::label_type;
-}&& requires(T v, typename T::label_type x) {
-        { v.value(x) } // set value to x
-};*/
+	typename T::Data_type;
+	typename T::Label_type;
+	//requires Data<typename T::Data_type>;
+	//requires Labels<typename T::Label_type>;
 
-template<typename T>
-concept bool Classification =  requires()
-	{
-
-		typename T::Data_type;
-		typename T::Label_type;
-		//requires Data<typename T::Data_type>;
-		//requires Labels<typename T::Label_type>;
-		
-}&&requires(T t, typename T::Data_type d,typename T::Label_type l){
+} && requires(T t, typename T::Data_type d,typename T::Label_type l) {
 	train(t,d,l);
-		classify(t,d);
+	classify(t,d);
 };
 
 void check(Classification &x,data1 &md,labels &ml)
 {
-	cout<<"Check the classifier\n";
+	std::cout<<"Check the classifier\n";
 	train(x,md,ml);
 }
 
 void test(Classification &x,data1 &td)
 {
-	cout<<"Test the classifier\n";
+	std::cout<<"Test the classifier\n";
 	classify(x,td);
 }
-
-
-
-
-
-
-
-
+} // namespace libml

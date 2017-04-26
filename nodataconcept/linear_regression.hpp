@@ -3,8 +3,6 @@
 #include <iostream>
 #include <numeric>
 
-using namespace std;
-
 // beta = np.zeros(x.shape[1])
 // p_beta = np.empty_like(beta)
 // if alpha == 0.8:
@@ -30,29 +28,30 @@ using namespace std;
 // 	d = (np.dot(x, beta) -  y).T
 // 	return np.dot(d, x).T / x.shape[0]
 
+namespace libml {
 class LinearRegression{
 public:
 	double alpha = 0.8;
 	double maxIter = 80;
 	double tol;
-	string method;
+	std::string method;
 	bool fit_intercept = 1;
-	vector<double> beta;
+	std::vector<double> beta;
 
 	// Operations for saving and restoring the state of the regression
 	// after initial training.
 	friend std::ostream& operator<<(std::ostream& os, const LinearRegression& lr);
 	friend std::istream& operator>>(std::istream& is, LinearRegression& lr);
 
-	double obj(vector<double> beta,vector<vector<double>> x,vector<double> y)
+	double obj(std::vector<double> beta,std::vector<std::vector<double>> x,std::vector<double> y)
 	{
 		return 0;
 	}
 
-	vector<double> grad(vector<double>& beta, vector<vector<double>>& train_data, vector<double>& train_labels)
+	std::vector<double> grad(std::vector<double>& beta, std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
 	{
-		vector<double> d(train_labels.size());
-		vector<double> gradient(train_data[0].size(), 0);
+		std::vector<double> d(train_labels.size());
+		std::vector<double> gradient(train_data[0].size(), 0);
 
 		for (int i = 0; i < train_labels.size(); i++)
 		{
@@ -60,7 +59,7 @@ public:
 			d[i] = d[i] - train_labels[i];
 		}
 
-		vector<double> col(train_labels.size());
+		std::vector<double> col(train_labels.size());
 		// cout << "Size:" << train_data[0].size() << endl;
 
 		for (int i = 0; i < train_data[0].size(); i++)
@@ -81,18 +80,18 @@ public:
 		return gradient;
 	}
 	
-	void train(vector<vector<double>>& train_data, vector<double>& train_labels)
+	void train(std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
 	{
 		beta.resize(train_data[0].size(), 0);
 
-		//vector<double> p_beta(train_data[0].size(), 0);
+		//std::vector<double> p_beta(train_data[0].size(), 0);
 		int iter = 1;
 
 		// if (fit_intercept)
 		// 	train_data
 		while(iter <= maxIter)
 		{	
-			vector<double> g = grad(beta, train_data, train_labels);
+			std::vector<double> g = grad(beta, train_data, train_labels);
 			// for (auto x : g)
 			// cout << "beta" << x << endl;
 			
@@ -103,17 +102,17 @@ public:
 			iter++;
 
 			for (auto b: beta)
-				cout << b << " ";
-			cout << endl;
+				std::cout << b << " ";
+			std::cout << std::endl;
 		}
 	}
 
 	// void set_beta)()
 	
-	void regress(vector<vector<double>> test_data)
+	void regress(std::vector<std::vector<double>> test_data)
 	{
-		// vector<double> beta = this->beta;
-		// cout << this->beta << endl;
+		// std::vector<double> beta = this->beta;
+		// std::cout << this->beta << std::endl;
 	}
 };
 
@@ -146,3 +145,4 @@ std::istream& operator>>(std::istream& is, LinearRegression& lr) {
 
 	return is;
 }
+} // namespace libml

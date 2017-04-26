@@ -4,8 +4,8 @@
 //#include "DataforClassification.h"
 //#include "LabelsforClassification.h"
 #include "Perceptron.h"
-using namespace std;
 
+namespace libml {
 class NaiveBayes
 {
 public:
@@ -22,13 +22,13 @@ public:
 	
 	void train(data1 &x,labels &y)
 	{
-		cout<<"train the model(NaiveBayes)\n";
-		cout<<"Inside naive bayes";
-		ofstream f;
+		std::cout<<"train the model(NaiveBayes)\n";
+		std::cout<<"Inside naive bayes";
+		std::ofstream f;
 		f.open ("outputknn.txt");
 		int numberoffeatures=x[0].size()+1;
 		int numberofexamples=x.size();
-		vector<int> weights;
+		std::vector<int> weights;
 		for(int i=0;i<numberoffeatures;i++)
 			weights.push_back(0);
 		for(int i=0;i<numberofexamples;i++)
@@ -36,18 +36,18 @@ public:
 			x[i].insert(x[i].begin(),1);
 		}
 
-		cout<<"Data size"<<x[0].size();
+		std::cout<<"Data size"<<x[0].size();
 		for(int i=0;i<numberofexamples;i++)
 		{
 			for(int j=0;j<numberoffeatures;j++)
 			{
-				cout<<x[i][j]<<" ";
+				std::cout<<x[i][j]<<" ";
 			}
-			cout<<endl;
+			std::cout<<endl;
 		}
 
-		map<int,int> prior;
-		map<int,int>::iterator it;
+		std::map<int,int> prior;
+		std::map<int,int>::iterator it;
 		for(int i=0;i<numberofexamples;i++)
 		{
 			it=prior.find(y[i]);
@@ -63,15 +63,15 @@ public:
 		it=prior.begin();
 		while(it!=prior.end())
 		{
-			cout<<"prior";
-			cout<<it->first;
-			cout<<it->second<<endl;it++;
+			std::cout<<"prior";
+			std::cout<<it->first;
+			std::cout<<it->second<<endl;it++;
 		}
 	};
 	void classify(data1 &x)
 	{
-		cout<<"classify the data(NaiveBayes)\n";
+		std::cout<<"classify the data(NaiveBayes)\n";
 	};
 	
 };
-
+} // namespace libml

@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+namespace libml {
 template<typename T>
 concept bool Serializable = requires(T t, std::istream& i, std::ostream& o)
 {
@@ -16,5 +17,6 @@ concept bool Regression = Serializable<T> && requires(T t, D d, L l)
 	t.train(d,l);
 	t.regress(d);
 };
+} // namespace libml
 
 #endif

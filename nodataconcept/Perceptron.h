@@ -7,10 +7,11 @@
 using namespace std;
 #include <fstream>
 
+namespace libml {
 class Perceptron
 {
 private:
-	vector<int> weights;
+	std::vector<int> weights;
 
 public:
 	//using datatype=data1;
@@ -26,7 +27,7 @@ public:
 	//LabelsforClassification l= new LabelsforClassification();
 	
 	void train(data1& x, labels& y) {
-		ofstream f;
+		std::ofstream f;
 		f.open ("trainingweights.txt");
 
 		// TODO: Need to make sure that every data entry
@@ -43,7 +44,7 @@ public:
 			x[i].insert(x[i].begin(),1);
 		}
 
-		cout<<"Data size"<<x[0].size();
+		std::cout<<"Data size"<<x[0].size();
 		for(int i=0;i<numberofexamples;i++)
 		{
 			for(int j=0;j<numberoffeatures;j++)
@@ -75,10 +76,11 @@ public:
 			f<<weights[j]<<"\n";
 		}
 
-		cout<<"train the model\n";
+		std::cout<<"train the model\n";
 	}
 
 	void classify(data1& x) {
-		cout<<"classify the data\n";
+		std::cout<<"classify the data\n";
 	}
 };
+} // namespace libml

@@ -1,11 +1,12 @@
 #include <cmath>
 
-vector<double> calculate_mean(vector<vector<double>>& train_data)
+namespace libml {
+std::vector<double> calculate_mean(std::vector<std::vector<double>>& train_data)
 {
 	int nSamples = train_data.size();
 	int nDimensions = train_data[0].size();
-	vector<double> mean(train_data[0].size(),0);
-	
+	std::vector<double> mean(train_data[0].size(),0);
+
 	for (int j = 0; j < nDimensions; j++)
 	{
 		for (int i = 0; i < nSamples; i++)
@@ -17,12 +18,12 @@ vector<double> calculate_mean(vector<vector<double>>& train_data)
 	return mean;
 }
 
-vector<double> calculate_std(vector<vector<double>>& train_data)
+std::vector<double> calculate_std(std::vector<std::vector<double>>& train_data)
 {
 	int nSamples = train_data.size();
 	int nDimensions = train_data[0].size();
-	vector<double> mean = calculate_mean(train_data);
-	vector<double> std(train_data[0].size(),0);
+	std::vector<double> mean = calculate_mean(train_data);
+	std::vector<double> std(train_data[0].size(),0);
 
 	for (int j = 1; j < nDimensions; j++)
 	{
@@ -35,3 +36,4 @@ vector<double> calculate_std(vector<vector<double>>& train_data)
 	}
 	return std;
 }
+} // namespace libml

@@ -6,6 +6,8 @@
 #include "helper.hpp"
 #include <cmath>
 
+using namespace std;
+
 int main()
 {
 
@@ -26,8 +28,8 @@ while(in.read_row(age, weight, height))
 	train_labels.push_back(height);
 }
 
-vector<double> mean = calculate_mean(train_data);
-vector<double> std = calculate_std(train_data);
+vector<double> mean = libml::calculate_mean(train_data);
+vector<double> std = libml::calculate_std(train_data);
 // cout << "Mean:" << mean[0] << " " << mean[1] << " " << mean[2] << endl;
 // cout << "STD:" << std[0] << " " << std[1] << " " << std[2] << endl;
 int nSamples = train_data.size();	
@@ -43,7 +45,7 @@ for (int j = 1; j < nDimensions; j++)
 }
 
 /* ###### Linear Regression ###### */
-LinearRegression lr;
+libml::LinearRegression lr;
 cout << "Calling Linear Regression train" << endl;
 lr.train(train_data, train_labels);
 

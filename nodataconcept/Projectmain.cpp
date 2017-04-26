@@ -47,19 +47,19 @@ int main()
 	}*/
 
 
-	Perceptron p;
+	/*libml::Perceptron p;
 	p.d=perceptrondata;
 	
 	cout<<"First element of the training data  "<<p.d[2][1]<<endl;
 
 	p.l=perceptronlabels;
 	
-	cout<<"First element of the training label  "<<p.l[0]<<endl;
+	cout<<"First element of the training label  "<<p.l[0]<<endl;*/
 
 
 
 
-	NaiveBayes nb;
+	libml::NaiveBayes nb;
 	nb.d=perceptrondata;
 	
 	cout<<"First element of the training data  "<<nb.d[2][1]<<endl;
@@ -68,7 +68,7 @@ int main()
 	
 	cout<<"First element of the training label  "<<nb.l[0]<<endl;
 
-	KNN knn;
+	/*libml::KNN knn;
 	knn.d=perceptrondata;
 	knn.l=perceptronlabels;
 
@@ -79,7 +79,7 @@ int main()
 
 	vector<vector<int>> knntestdata;
 	knntestdata={{8,-11},{14,-3}};
-	test(knn,knntestdata);
+	test(knn,knntestdata);*/
 	/*NB_Data nd;
 	nd.val=perceptrondata;
 
