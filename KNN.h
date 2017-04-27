@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <boost/range/numeric.hpp>
 //#include "DataforClassification.h"
 //#include "LabelsforClassification.h"
 #include "NaiveBayes.h"
@@ -121,7 +120,7 @@ public:
 				std::transform(x[i].begin(), x[i].end(), testdata[j].begin(), std::back_inserter(dist),
     			[&](int a, int b) { return ((a-b)*(a-b)); });
 
-    			int sum = boost::accumulate(dist, 0);
+    			int sum = std::accumulate(dist.begin(), dist.end(), 0);
     			eucdist.push_back(sqrt(sum));
 
 
