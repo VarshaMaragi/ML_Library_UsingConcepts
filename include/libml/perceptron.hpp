@@ -12,23 +12,22 @@
 namespace libml {
 class Perceptron
 {
-private:
-	std::vector<int> weights;
-
 public:
 	//using datatype=data1;
 	//using labelstype=labels;
 
 	using Data_type = libml::matrix2<double>;
 	using Label_type = std::vector<int>;
+
 	Data_type d;
 	Label_type l;
 
+        std::vector<int> weights;
 
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
-	void train(Data_type& x, Label_type& y) {
+	void train(Perceptron &p, Data_type& x, Label_type& y) {
 		std::ofstream f;
 		f.open ("trainingweights.txt");
 
@@ -80,8 +79,35 @@ public:
 		std::cout<<"train the model\n";
 	}
 
-	void classify(Data_type& x) {
-		std::cout<<"classify the data\n";
+        std::vector<int> classify(Data_type& x) {
+                std::cout<<"classify the data\n";
+                std::vector<int> predy;
+		for(int i=0;i<x.size();i++)
+		{
+			x[i].insert(x[i].begin(),1);
+		}
+		for(int i=0;i<x.size();i++)
+		{
+			
+			predy.push_back(inner_product(begin(x[i]), end(x[i]), begin(weights), 0.0));
+			
+		}
+		for(int i=0;i<x.size();i++)
+		{
+			if(predy[i]<0)
+			{
+			
+			predy[i]=-1;
+			}
+			else
+			{
+				
+				predy[i]=1;
+			}
+
+		}
+
+                return predy;
 	}
 };
 } // namespace libml

@@ -45,6 +45,31 @@ std::vector<double> calculate_std(matrix2<double>& train_data)
 	return std;
 }
 
+float accuracy(std::vector<int> a, std::vector<int> b)
+{
+	float sum=0;
+        float accuracy;
+
+	for(int i=0;i<a.size();i++)
+	{
+		if(a[i]!=b[i])
+			sum=sum+1;
+	}
+
+	accuracy=1-float((sum/a.size()));
+	return accuracy;
+}
+
+double euclidean_distance(std::vector<double> x, std::vector<double> y)
+{
+	double dist = 0;
+	for(int i = 0; i < x.size(); i++)
+	{
+		dist += pow(x[i] - y[i], 2);
+	}
+	return sqrt(dist);
+}
+
 } // namespace libml
 
 #endif // ifndef LIBML_HELPER_HPP
