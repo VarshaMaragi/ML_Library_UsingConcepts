@@ -14,7 +14,7 @@ namespace libml {
         {
                 public:
 
-                        using Data_type = libml::matrix2<double>;
+                        using Data_type = libml::matrix2<int>;
                         using Label_type = std::vector<int>;
 
                         Data_type d;

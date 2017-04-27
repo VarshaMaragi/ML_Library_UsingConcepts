@@ -1,10 +1,13 @@
+#ifndef LIBML_KMEANS_HPP
+#define LIBML_KMEANS_HPP
+
 #include <vector>
-#include <stdlib.h>
 #include <limits>
 #include <algorithm>
-#include "helper.hpp"
+#include <stdexcept>
+#include "helpers.hpp"
 
-using namespace std;
+namespace libml {
 
 class KMeans{
 private:
@@ -13,9 +16,11 @@ private:
 
 public:
 
-	vector<vector<double>> init_centroids(vector<vector<double>>& train_data)
+        using Data_type = libml::matrix2<double>;
+
+        std::vector<std::vector<double>> init_centroids(std::vector<std::vector<double>>& train_data)
 	{
-		vector<vector<double>> centroids;
+                std::vector<std::vector<double>> centroids;
 		for (int i = 0; i < k; i++)
 		{
 			auto n = rand() % train_data.size();
@@ -35,9 +40,9 @@ public:
     //         centroids[i] = centroid
     //     return centroids
 
-    vector<double> cluster_mean(vector<vector<double>> cluster)
+        std::vector<double> cluster_mean(std::vector<std::vector<double>> cluster)
     {
-    	vector<double> clmean(cluster[0].size(), 0);
+            std::vector<double> clmean(cluster[0].size(), 0);
 		for (int j = 0; j < cluster[0].size(); j++)
 		{
 			for (int i = 0; i < cluster.size(); i++)
@@ -49,10 +54,10 @@ public:
 		return clmean;
     }
 
-	vector<vector<double>> calculate_centroids(auto clusters, vector<vector<double>>& train_data)
+        std::vector<std::vector<double>> calculate_centroids(auto clusters, std::vector<std::vector<double>>& train_data)
 	{	
 		int n_features = train_data[0].size();
-		vector<vector<double>> centroids(k, vector<double>(n_features));
+                std::vector<std::vector<double>> centroids(k, std::vector<double>(n_features));
 		for (int i = 0; i < k; i++)
 		{
 			auto centroid = cluster_mean(clusters[i]);
@@ -67,7 +72,7 @@ public:
 		int closest_i = 0;
 		for (int i = 0; i < centroids.size(); i++)
 		{
-			auto distance = euclidean_distance(sample, centroids[i]);
+			auto distance = libml::euclidean_distance(sample, centroids[i]);
 			if (distance < closest_distance)
 			{
 				closest_i = i;
@@ -77,10 +82,10 @@ public:
 		return closest_i;
 	}
 	
-	vector<vector<vector<double>>> create_clusters(vector<vector<double>>& centroids, vector<vector<double>>& train_data)
+        std::vector<std::vector<std::vector<double>>> create_clusters(std::vector<std::vector<double>>& centroids, std::vector<std::vector<double>>& train_data)
 	{
 		auto n_samples = train_data.size();
-		vector<vector<vector<double>>> clusters(3);
+                std::vector<std::vector<std::vector<double>>> clusters(3);
 
 		for (auto sample : train_data)
 		{
@@ -110,9 +115,9 @@ public:
 		return 0;
 	}
 
-	vector<int> cluster_labels(auto clusters,auto train_data)
+        std::vector<int> cluster_labels(auto clusters,auto train_data)
 	{
-		vector<int> pred_labels;
+                std::vector<int> pred_labels;
 		for (auto ex : train_data)
 		{
 			for (int i = 0; i < clusters.size(); i++)
@@ -130,12 +135,17 @@ public:
 		return pred_labels;
 	}
 
-	vector<int> classify(vector<vector<double>>& train_data)
+        void train(Data_type& data) {
+                // FIXME
+                throw std::logic_error("Not implemented");
+        }
+
+        std::vector<int> classify(std::vector<std::vector<double>>& train_data)
 	{
-		vector<vector<double>> centroids = init_centroids(train_data);
-		vector<vector<double>> prev_centroids;
+                std::vector<std::vector<double>> centroids = init_centroids(train_data);
+                std::vector<std::vector<double>> prev_centroids;
 		int iter = 1;
-		vector<vector<vector<double>>> clusters;
+                std::vector<std::vector<std::vector<double>>> clusters;
 		
 		while(iter <= maxIter)
 		{
@@ -166,3 +176,7 @@ public:
 	: k(k), maxIter(maxIter)
 	{}
 };
+
+} // namespace libml
+
+#endif // ifndef LIBML_KMEANS_HPP

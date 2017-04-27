@@ -79,6 +79,21 @@ concept bool Classification = requires()
 };
 
 template<typename T>
+concept bool UnsupervisedClassification = requires()
+{
+	typename T::Data_type;
+	typename T::Data_type::value_type::value_type; // This is a bad hack!
+
+	requires Data<typename T::Data_type, typename T::Data_type::value_type::value_type>();
+
+} && requires(T t, typename T::Data_type d) {
+	t.train(d);
+	t.classify(d);
+};
+
+
+
+template<typename T>
 void check(T& x, typename T::Data_type& md, typename T::Label_type& ml) requires Classification<T>
 {
 	std::cout<<"Check the classifier\n";

@@ -16,7 +16,7 @@ public:
 	//using datatype=data1;
 	//using labelstype=labels;
 
-	using Data_type = libml::matrix2<double>;
+	using Data_type = libml::matrix2<int>;
 	using Label_type = std::vector<int>;
 
 	Data_type d;
@@ -27,7 +27,7 @@ public:
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
-	void train(Perceptron &p, Data_type& x, Label_type& y) {
+	void train(Data_type& x, Label_type& y) {
 		std::ofstream f;
 		f.open ("trainingweights.txt");
 

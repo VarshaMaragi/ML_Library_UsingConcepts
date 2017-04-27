@@ -1,3 +1,6 @@
+#ifndef LIBML_LOGISTIC_REG_HPP
+#define LIBML_LOGISTIC_REG_HPP
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -18,36 +21,30 @@
 
 // refer to matrix row
 #include <boost/numeric/ublas/matrix_proxy.hpp>
-
 #include "util.hpp"
-
 #include "KNN.h"
 
 
-using namespace std;
-using namespace boost::numeric::ublas;
-
+namespace libml {
 
 bool debug = true;
 
-struct logisticreg
+class logisticreg
 {
 public:
 
     //using datatype=data1;
     //using labelstype=labels;
 
-    using Data_type=data1;
-    using Label_type=labels;
+    using Data_type = libml::matrix2<int>;
+    using Label_type = std::vector<int>;
+
     Data_type d;
     Label_type l;
 
 
     //DataforClassification d=new DataforClassification();
     //LabelsforClassification l= new LabelsforClassification();
-    
-    
-};
 
 //
 double sigmoid(double x) {
@@ -174,3 +171,9 @@ void train(logisticreg &p,data1 &myx,labels &myy
 
     return 0;
 }*/
+
+};
+
+} // namespace libml
+
+#endif // ifndef LIBML_LOGISTIC_REG_HPP
