@@ -3,13 +3,12 @@
 
 #include <stdio.h>
 #include <iostream>
-//#include "DataforClassification.h"
-//#include "LabelsforClassification.h"
 #include "NaiveBayes.h"
-using namespace std;
+#include <algorithm>
 #include <fstream>
 #include <map>
 #include <math.h>
+#include <vector>
 
 namespace libml {
 class KNN
@@ -19,8 +18,8 @@ public:
 	//using datatype=data1;
 	//using labelstype=labels;
 
-	using Data_type=data1;
-	using Label_type=labels;
+	using Data_type = libml::matrix2<double>;;
+	using Label_type = std::vector<int>;
 	Data_type d;
 	Label_type l;
 
@@ -28,7 +27,7 @@ public:
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
-	void train(data1 &x,labels &y)
+	void train(Data_type& x, Label_type& y)
 	{
 		std::cout<<"Inside KNN";
 		/*ofstream f;
@@ -83,7 +82,7 @@ public:
 		std::cout<<"train the model\n";
 	};
 
-	void classify(data1 &testdata)
+	void classify(Data_type& testdata)
 	{
 		std::cout<<"classify the data\n";
 		std::cout<<"Inside KNN classify";

@@ -13,17 +13,13 @@ class NaiveBayes
 {
 public:
 
-	//using datatype=data1;
-	//using labelstype=labels;
-	using Data_type=data1;
-	using Label_type=labels;
+        using Data_type = libml::matrix2<double>;
+        using Label_type = std::vector<int>;
+	
 	Data_type d;
 	Label_type l;
 
-	//DataforClassification d=new DataforClassification();
-	//LabelsforClassification l= new LabelsforClassification();
-	
-	void train(data1 &x,labels &y)
+	void train(Data_type& x, Label_type& y)
 	{
 		std::cout<<"train the model(NaiveBayes)\n";
 		std::cout<<"Inside naive bayes";
@@ -71,7 +67,7 @@ public:
 			std::cout<<it->second<<endl;it++;
 		}
 	};
-	void classify(data1 &x)
+	void classify(Data_type& x)
 	{
 		std::cout<<"classify the data(NaiveBayes)\n";
 	};

@@ -2,9 +2,14 @@
 #define LIBML_HELPER_HPP
 
 #include <cmath>
+#include <vector>
 
 namespace libml {
-std::vector<double> calculate_mean(std::vector<std::vector<double>>& train_data)
+
+template<typename T>
+using matrix2 = std::vector<std::vector<T>>;
+
+std::vector<double> calculate_mean(matrix2<double>& train_data)
 {
 	int nSamples = train_data.size();
 	int nDimensions = train_data[0].size();
@@ -21,7 +26,7 @@ std::vector<double> calculate_mean(std::vector<std::vector<double>>& train_data)
 	return mean;
 }
 
-std::vector<double> calculate_std(std::vector<std::vector<double>>& train_data)
+std::vector<double> calculate_std(matrix2<double>& train_data)
 {
 	int nSamples = train_data.size();
 	int nDimensions = train_data[0].size();
@@ -39,6 +44,7 @@ std::vector<double> calculate_std(std::vector<std::vector<double>>& train_data)
 	}
 	return std;
 }
+
 } // namespace libml
 
 #endif // ifndef LIBML_HELPER_HPP

@@ -1,15 +1,12 @@
 #include<stdio.h>
 #include<iostream>
 #include "KNN.h"
-#include "parsecsv.h"
+#include "csv.h"
 using namespace std;
 
 int main()
-{
-
-	
-	
-	vector<vector<int>> perceptrondata;
+{	
+	vector<vector<double>> perceptrondata;
 	vector<vector<string>> parseddata;
 	vector<int> perceptronlabels;
 	parseddata=parsefile("perceptroninput.csv");
@@ -21,7 +18,7 @@ int main()
 
 	for(int i=0;i<parseddata.size();i++)
 	{
-		vector<int> temp;
+		vector<double> temp;
 		for(int j=0;j<parseddata[0].size()-1;j++)
 		{
 			temp.push_back(stoi(parseddata[i][j]));

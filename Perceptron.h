@@ -6,9 +6,11 @@
 #include <numeric>
 //#include "DataforClassification.h"
 //#include "LabelsforClassification.h"
-#include "ConceptDef.h"
+#include "concepts.hpp"
 using namespace std;
 #include <fstream>
+#include <vector>
+#include "helpers.hpp"
 
 namespace libml {
 class Perceptron
@@ -20,8 +22,8 @@ public:
 	//using datatype=data1;
 	//using labelstype=labels;
 
-	using Data_type=data1;
-	using Label_type=labels;
+	using Data_type = libml::matrix2<double>;
+	using Label_type = std::vector<int>;
 	Data_type d;
 	Label_type l;
 
@@ -29,7 +31,7 @@ public:
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
 	
-	void train(data1& x, labels& y) {
+	void train(Data_type& x, Label_type& y) {
 		std::ofstream f;
 		f.open ("trainingweights.txt");
 
@@ -82,7 +84,7 @@ public:
 		std::cout<<"train the model\n";
 	}
 
-	void classify(data1& x) {
+	void classify(Data_type& x) {
 		std::cout<<"classify the data\n";
 	}
 };
