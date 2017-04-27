@@ -6,7 +6,8 @@
 #include "helper.hpp"
 #include <cmath>
 
-using namespace std;
+#include "functions.hpp"
+#include <cmath>
 
 int main()
 {
@@ -47,7 +48,13 @@ for (int j = 1; j < nDimensions; j++)
 /* ###### Linear Regression ###### */
 libml::LinearRegression lr;
 cout << "Calling Linear Regression train" << endl;
-lr.train(train_data, train_labels);
+libml::classifier_train(lr, train_data, train_labels);
+
+cout << "Calling Linear Regression Predict" << endl;
+auto predicted_labels = classifier_predict(lr, test_data);
+
+// for (auto p: predicted_labels)
+// 	cout << p << endl;
 
 cout << "Saving regression data" << endl;
 std::ofstream state_out("lr_state.txt", std::ofstream::out);

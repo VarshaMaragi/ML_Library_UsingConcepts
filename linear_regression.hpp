@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <iostream>
 #include <numeric>
+#include <cmath>
+#include <stdexcept>
 
 // beta = np.zeros(x.shape[1])
 // p_beta = np.empty_like(beta)
@@ -31,23 +33,37 @@
 namespace libml {
 class LinearRegression{
 public:
-	double alpha = 0.8;
-	double maxIter = 80;
+	double alpha;
+	double maxIter;
 	double tol;
 	std::string method;
-	bool fit_intercept = 1;
+	bool fit_intercept;
+	bool verbose;
 	std::vector<double> beta;
+
+// def obj(beta, x, y):
+// 	return (np.power((np.dot(x, beta) - y), 2).sum() / (2*x.shape[0]))
 
 	// Operations for saving and restoring the state of the regression
 	// after initial training.
 	friend std::ostream& operator<<(std::ostream& os, const LinearRegression& lr);
 	friend std::istream& operator>>(std::istream& is, LinearRegression& lr);
 
-	double obj(std::vector<double> beta,std::vector<std::vector<double>> x,std::vector<double> y)
+	// The Linear Regression Objective value
+	double obj(std::vector<double> beta, std::vector<std::vector<double>> train_data, std::vector<double> train_labels)
 	{
-		return 0;
+		vector<double> d(train_labels.size());
+		for (int i = 0; i < train_labels.size(); i++)
+		{
+			d[i] = inner_product(train_data[i].begin(), train_data[i].end(), beta.begin(), 0.0) ;
+			d[i] = d[i] - train_labels[i];
+			d[i] = pow(d[i], 2);
+		}
+		return accumulate(d.begin(), d.end(), 0.0) / (2 * train_data.size());
 	}
 
+
+	// Calculating the gradient
 	std::vector<double> grad(std::vector<double>& beta, std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
 	{
 		std::vector<double> d(train_labels.size());
@@ -70,49 +86,82 @@ public:
 			}
 
 			gradient[i] = inner_product(d.begin(), d.end(), col.begin(), 0.0);
-			// cout << "i:" << i  << endl;
-
-			// for (auto x : col)
-			// 	cout << x << endl;
 		}
 		for (auto& g: gradient)
 			g = g / train_labels.size();
 		return gradient;
 	}
-	
+
 	void train(std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
 	{
+		if (train_data.size() != train_labels.size())
+		{
+        	throw std::invalid_argument( "No. of rows in Train data and Train Labels must be equal");
+		}
 		beta.resize(train_data[0].size(), 0);
-
-		//std::vector<double> p_beta(train_data[0].size(), 0);
+		std::vector<double> p_beta(train_data[0].size(), 0);
 		int iter = 1;
 
-		// if (fit_intercept)
-		// 	train_data
-		while(iter <= maxIter)
+		while (iter <= maxIter)
 		{	
 			std::vector<double> g = grad(beta, train_data, train_labels);
-			// for (auto x : g)
-			// cout << "beta" << x << endl;
 			
 			for (int i = 0; i < train_data[0].size(); i++)
 			{
 				beta[i] = beta[i] - alpha * g[i];
 			}
-			iter++;
 
-			for (auto b: beta)
-				std::cout << b << " ";
-			std::cout << std::endl;
+			if (verbose)
+			{
+				for (auto b: beta)
+					cout << b << " ";
+				cout << endl;
+			}
+
+			if (iter !=1 && abs(obj(beta, train_data, train_labels) - obj(p_beta, train_data, train_labels)) <= tol)
+			{
+				if (verbose)
+				{
+					cout << "Converged at iter: " << iter << endl;
+				}
+				break;
+			}
+			p_beta = beta;
+			iter++;
 		}
 	}
 
-	// void set_beta)()
-	
-	void regress(std::vector<std::vector<double>> test_data)
+	std::vector<double> regress(std::vector<std::vector<double>> test_data)
 	{
-		// std::vector<double> beta = this->beta;
-		// std::cout << this->beta << std::endl;
+		if (test_data[0].size() != this->beta.size())
+		{
+			// cout << "Test data dimensions must be same as the training data" << endl;
+			throw std::invalid_argument( "No. of columns in Test data must be same as the Training data");
+		}
+
+		if (verbose)
+		{
+			cout << "Regressing on test data" << endl;
+		}
+		
+		std::vector<double> predicted_values(test_data.size());
+		for (int i = 0; i < test_data.size(); i++)
+		{
+			predicted_values[i] = inner_product(test_data[i].begin(), test_data[i].end(), this->beta.begin(), 0.0);
+		}
+
+		if (verbose)
+		{	
+			cout << "Predicted Values" << endl;
+			for (auto p: predicted_values)
+			cout << p << endl;
+		}
+		return predicted_values;
+	}
+
+	LinearRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 0)   
+        : alpha(alpha), maxIter(maxIter), tol(tol), fit_intercept(fit_intercept), verbose(verbose) // member init list  
+	{
 	}
 };
 

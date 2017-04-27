@@ -6,7 +6,7 @@ std::vector<double> calculate_mean(std::vector<std::vector<double>>& train_data)
 	int nSamples = train_data.size();
 	int nDimensions = train_data[0].size();
 	std::vector<double> mean(train_data[0].size(),0);
-
+	
 	for (int j = 0; j < nDimensions; j++)
 	{
 		for (int i = 0; i < nSamples; i++)
