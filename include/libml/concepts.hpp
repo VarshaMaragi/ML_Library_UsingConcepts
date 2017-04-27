@@ -24,7 +24,7 @@ concept bool NDimensional() {
 			})
 		|| (requires(T t, std::size_t n) {
 				{ t[n] };
-			} /*&& NDimensional<T, R, D - 1>()*/);
+			} /*&& NDimensional<T, R, D - 1>()*/); // This hangs the compiler!
 }
 
 template<typename T>
