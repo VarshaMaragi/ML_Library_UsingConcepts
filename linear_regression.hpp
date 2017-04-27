@@ -52,7 +52,7 @@ public:
 	// The Linear Regression Objective value
 	double obj(std::vector<double> beta, std::vector<std::vector<double>> train_data, std::vector<double> train_labels)
 	{
-		vector<double> d(train_labels.size());
+		std::vector<double> d(train_labels.size());
 		for (int i = 0; i < train_labels.size(); i++)
 		{
 			d[i] = inner_product(train_data[i].begin(), train_data[i].end(), beta.begin(), 0.0) ;
@@ -114,15 +114,15 @@ public:
 			if (verbose)
 			{
 				for (auto b: beta)
-					cout << b << " ";
-				cout << endl;
+					std::cout << b << " ";
+				std::cout << std::endl;
 			}
 
 			if (iter !=1 && abs(obj(beta, train_data, train_labels) - obj(p_beta, train_data, train_labels)) <= tol)
 			{
 				if (verbose)
 				{
-					cout << "Converged at iter: " << iter << endl;
+					std::cout << "Converged at iter: " << iter << std::endl;
 				}
 				break;
 			}
@@ -141,7 +141,7 @@ public:
 
 		if (verbose)
 		{
-			cout << "Regressing on test data" << endl;
+			std::cout << "Regressing on test data" << std::endl;
 		}
 		
 		std::vector<double> predicted_values(test_data.size());
@@ -152,9 +152,9 @@ public:
 
 		if (verbose)
 		{	
-			cout << "Predicted Values" << endl;
+			std::cout << "Predicted Values" << std::endl;
 			for (auto p: predicted_values)
-			cout << p << endl;
+			std::cout << p << std::endl;
 		}
 		return predicted_values;
 	}
