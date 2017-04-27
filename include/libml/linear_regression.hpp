@@ -7,6 +7,7 @@
 #include <numeric>
 #include <cmath>
 #include <stdexcept>
+#include "helpers.hpp"
 
 // beta = np.zeros(x.shape[1])
 // p_beta = np.empty_like(beta)
@@ -43,6 +44,9 @@ public:
 	bool fit_intercept;
 	bool verbose;
 	std::vector<double> beta;
+
+        using Data_type = libml::matrix2<double>;
+        using Label_type = std::vector<double>;
 
 // def obj(beta, x, y):
 // 	return (np.power((np.dot(x, beta) - y), 2).sum() / (2*x.shape[0]))

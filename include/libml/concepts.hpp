@@ -24,7 +24,7 @@ concept bool NDimensional() {
 			})
 		|| (requires(T t, std::size_t n) {
 				{ t[n] };
-			} && NDimensional<T, R, D - 1>);
+			} /*&& NDimensional<T, R, D - 1>()*/);
 }
 
 template<typename T>
@@ -34,9 +34,29 @@ concept bool Serializable = requires(T t, std::istream& i, std::ostream& o)
 	{ i << t };
 };
 
-template<typename T, typename D, typename L>
-concept bool Regression = requires(T t, D d, L l)
+template<typename T, typename R>
+concept bool Data() {
+	return NDimensional<T, R, 2>();
+}
+
+template<typename T, typename R>
+concept bool Labels() {
+	return NDimensional<T, R, 1>();
+}
+
+template<typename T>
+concept bool Regression = requires()
 {
+	typename T::Data_type;
+	typename T::Label_type;
+
+	typename T::Data_type::value_type::value_type; // This is a bad hack!
+	typename T::Label_type::value_type;
+
+	requires Data<typename T::Data_type, typename T::Data_type::value_type::value_type>();
+	requires Labels<typename T::Label_type, typename T::Label_type::value_type>();
+
+} && requires(T t, typename T::Data_type d, typename T::Label_type l) {
 	t.train(d,l);
 	t.regress(d);
 };
@@ -47,22 +67,26 @@ concept bool Classification = requires()
 	typename T::Data_type;
 	typename T::Label_type;
 
-	requires NDimensional<typename T::Data_type, 1>;
-	requires NDimensional<typename T::Label_type, 2>;
+	typename T::Data_type::value_type::value_type; // This is a bad hack!
+	typename T::Label_type::value_type;
+
+	requires Data<typename T::Data_type, typename T::Data_type::value_type::value_type>();
+	requires Labels<typename T::Label_type, typename T::Label_type::value_type>();
 
 } && requires(T t, typename T::Data_type d, typename T::Label_type l) {
-	train(t,d,l);
-	classify(t,d);
+	t.train(d,l);
+	t.classify(d);
 };
 
-template<typename L>
-void check(Classification& x, NDimensional<L, 1>& md, NDimensional<Numeric, 2>& ml)
+template<typename T>
+void check(T& x, typename T::Data_type& md, typename T::Label_type& ml) requires Classification<T>
 {
 	std::cout<<"Check the classifier\n";
 	train(x,md,ml);
 }
 
-void test(Classification& x, NDimensional<Numeric, 2>& td)
+template<typename T>
+void test(T& x, typename T::Data_type& td)
 {
 	std::cout<<"Test the classifier\n";
 	classify(x,td);

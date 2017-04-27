@@ -50,10 +50,10 @@ for (int j = 1; j < nDimensions; j++)
 /* ###### Linear Regression ###### */
 libml::LinearRegression lr;
 cout << "Calling Linear Regression train" << endl;
-libml::classifier_train(lr, train_data, train_labels);
+libml::regression_train(lr, train_data, train_labels);
 
 cout << "Calling Linear Regression Predict" << endl;
-auto predicted_labels = classifier_predict(lr, test_data);
+auto predicted_labels = regression_predict(lr, test_data);
 
 // for (auto p: predicted_labels)
 // 	cout << p << endl;
