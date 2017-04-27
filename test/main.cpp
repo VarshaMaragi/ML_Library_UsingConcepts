@@ -15,8 +15,7 @@ int main()
 {
 
 // Read Data
-string filename = "input2.csv";
-io::CSVReader<3> in(filename);
+io::CSVReader<3> in("data/input2.csv");
 in.set_header("age", "weight", "height");
 
 vector<vector<double>> train_data;

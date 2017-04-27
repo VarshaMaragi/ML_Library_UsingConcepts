@@ -10,7 +10,7 @@ int main()
 	vector<vector<double>> perceptrondata;
 	vector<vector<string>> parseddata;
 	vector<int> perceptronlabels;
-	parseddata=parsefile("perceptroninput.csv");
+	parseddata=parsefile("data/perceptroninput.csv");
 	for(int i=0;i<parseddata.size();i++)
 	{
 		perceptronlabels.push_back(stoi(parseddata[i][parseddata[0].size()-1]));
