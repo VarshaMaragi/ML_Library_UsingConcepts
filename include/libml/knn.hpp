@@ -3,12 +3,12 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "NaiveBayes.h"
 #include <algorithm>
 #include <fstream>
 #include <map>
 #include <math.h>
 #include <vector>
+#include "naive_bayes.hpp"
 
 namespace libml {
 class KNN
@@ -97,14 +97,14 @@ public:
 			weights.push_back(0);
 		
 
-		cout<<"Data size"<<x[0].size();
+		std::cout<<"Data size"<<x[0].size();
 		for(int i=0;i<numberofexamples;i++)
 		{
 			for(int j=0;j<numberoffeatures;j++)
 			{
-				cout<<x[i][j]<<" ";
+				std::cout<<x[i][j]<<" ";
 			}
-			cout<<endl;
+			std::cout << std::endl;
 		}
 		
 		std::vector<int> predy;
@@ -124,10 +124,10 @@ public:
 
 
 			}
-			std::vector<pair<int,int>> p;
+			std::vector<std::pair<int,int>> p;
 			for(int i=0;i<eucdist.size();i++)
 			{
-				p.push_back(make_pair(eucdist[i], i));
+				p.push_back(std::make_pair(eucdist[i], i));
 
 			}
 
@@ -150,7 +150,7 @@ public:
 
 		for(int j=0;j<predy.size();j++)
 		{
-			cout<<predy[j];
+			std::cout << predy[j];
 		}
 
 

@@ -1,7 +1,8 @@
-#include<stdio.h>
-#include<iostream>
-#include "KNN.h"
-#include "csv.h"
+#include <cstdio>
+#include <iostream>
+#include <libml/csv.hpp>
+#include <libml/knn.hpp>
+
 using namespace std;
 
 int main()

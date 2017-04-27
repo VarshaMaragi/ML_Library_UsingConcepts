@@ -1,16 +1,13 @@
 #ifndef LIBML_PERCEPTRON_H
 #define LIBML_PERCEPTRON_H
 
-#include<stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <numeric>
-//#include "DataforClassification.h"
-//#include "LabelsforClassification.h"
-#include "concepts.hpp"
-using namespace std;
 #include <fstream>
 #include <vector>
 #include "helpers.hpp"
+#include "concepts.hpp"
 
 namespace libml {
 class Perceptron
@@ -54,11 +51,10 @@ public:
 		{
 			for(int j=0;j<numberoffeatures;j++)
 			{
-				cout<<x[i][j]<<" ";
+				std::cout << x[i][j] << " ";
 			}
-			cout<<endl;
+			std::cout << std::endl;
 		}
-
 
 		int flag=1;
 		while(flag==1)

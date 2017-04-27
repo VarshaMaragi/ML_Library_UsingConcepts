@@ -1,13 +1,13 @@
 #include <string>
 #include <fstream>
-#include "concepts.hpp"
-#include "linear_regression.hpp"
-#include "csv.h"
-#include "helpers.hpp"
+#include <cmath>
 #include <cmath>
 
-#include "functions.hpp"
-#include <cmath>
+#include <libml/concepts.hpp>
+#include <libml/linear_regression.hpp>
+#include <libml/csv.hpp>
+#include <libml/helpers.hpp>
+#include <libml/functions.hpp>
 
 using namespace std;
 

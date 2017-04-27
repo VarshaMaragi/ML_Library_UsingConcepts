@@ -6,7 +6,7 @@
 #include <map>
 //#include "DataforClassification.h"
 //#include "LabelsforClassification.h"
-#include "Perceptron.h"
+#include "perceptron.hpp"
 
 namespace libml {
 class NaiveBayes
@@ -42,7 +42,7 @@ public:
 			{
 				std::cout<<x[i][j]<<" ";
 			}
-			std::cout<<endl;
+			std::cout<<std::endl;
 		}
 
 		std::map<int,int> prior;
@@ -52,7 +52,7 @@ public:
 			it=prior.find(y[i]);
 			if(it==prior.end())
 			{
-				prior.insert(pair<int,int>(y[i],1));
+				prior.insert(std::pair<int,int>(y[i],1));
 			}
 			else
 				prior[y[i]]=prior[y[i]]+1;
@@ -64,7 +64,7 @@ public:
 		{
 			std::cout<<"prior";
 			std::cout<<it->first;
-			std::cout<<it->second<<endl;it++;
+			std::cout<<it->second<<std::endl;it++;
 		}
 	};
 	void classify(Data_type& x)
