@@ -1,5 +1,5 @@
-#ifndef CONCEPTS_HPP
-#define CONCEPTS_HPP
+#ifndef LIBML_CONCEPTS_HPP
+#define LIBML_CONCEPTS_HPP
 
 #include <iostream>
 
@@ -21,4 +21,4 @@ concept bool Regression = requires(T t, D d, L l)
 };
 } // namespace libml
 
-#endif
+#endif // ifndef LIBML_CONCEPTS_HPP

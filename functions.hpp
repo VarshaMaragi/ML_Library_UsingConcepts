@@ -1,3 +1,6 @@
+#ifndef LIBML_FUNCTIONS_HPP
+#define LIBML_FUNCTIONS_HPP
+
 #include "concepts.hpp"
 #include <vector>
 
@@ -14,3 +17,5 @@ std::vector<double> classifier_predict(Regression<std::vector<std::vector<double
 	return lr.regress(test_data);
 }
 } // namespace libml
+
+#endif // ifndef LIBML_FUNCTIONS_HPP

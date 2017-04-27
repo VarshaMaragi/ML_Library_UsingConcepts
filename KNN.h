@@ -1,3 +1,6 @@
+#ifndef LIBML_KNN_H
+#define LIBML_KNN_H
+
 #include <stdio.h>
 #include <iostream>
 #include <boost/range/numeric.hpp>
@@ -157,3 +160,5 @@ public:
 	
 };
 } // namespace libml
+
+#endif // ifndef LIBML_KNN_H

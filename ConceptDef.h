@@ -1,3 +1,6 @@
+#ifndef LIBML_CONCEPTDEF_H
+#define LIBML_CONCEPTDEF_H
+
 #include<stdio.h>
 #include<iostream>
 #include<vector>
@@ -90,3 +93,5 @@ void test(Classification &x,data1 &td)
 	classify(x,td);
 }
 } // namespace libml
+
+#endif // ifndef LIBML_CONCEPTDEF_H

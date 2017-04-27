@@ -1,3 +1,6 @@
+#ifndef LIBML_LINEAR_REGRESSION_HPP
+#define LIBML_LINEAR_REGRESSION_HPP
+
 #include <vector>
 #include <stdio.h>
 #include <iostream>
@@ -195,3 +198,5 @@ std::istream& operator>>(std::istream& is, LinearRegression& lr) {
 	return is;
 }
 } // namespace libml
+
+#endif // ifndef LIBML_LINEAR_REGRESSION_HPP

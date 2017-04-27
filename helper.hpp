@@ -1,3 +1,6 @@
+#ifndef LIBML_HELPER_HPP
+#define LIBML_HELPER_HPP
+
 #include <cmath>
 
 namespace libml {
@@ -37,3 +40,5 @@ std::vector<double> calculate_std(std::vector<std::vector<double>>& train_data)
 	return std;
 }
 } // namespace libml
+
+#endif // ifndef LIBML_HELPER_HPP

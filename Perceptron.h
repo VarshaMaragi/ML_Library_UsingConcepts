@@ -1,3 +1,6 @@
+#ifndef LIBML_PERCEPTRON_H
+#define LIBML_PERCEPTRON_H
+
 #include<stdio.h>
 #include <iostream>
 #include <numeric>
@@ -84,3 +87,5 @@ public:
 	}
 };
 } // namespace libml
+
+#endif // ifndef LIBML_PERCEPTRON_H

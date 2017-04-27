@@ -1,3 +1,6 @@
+#ifndef LIBML_NAIVEBAYES_H
+#define LIBML_NAIVEBAYES_H
+
 #include<stdio.h>
 #include<iostream>
 #include <map>
@@ -75,3 +78,5 @@ public:
 	
 };
 } // namespace libml
+
+#endif // ifndef LIBML_NAIVEBAYES_H
