@@ -3,10 +3,10 @@ CXX = g++
 
 INCLUDES = -I../include
 
-CFLAGS   = -Wall -O2 -std=c++1z -fconcepts $(INCLUDES)
-CXXFLAGS = -Wall -O2 -std=c++1z -fconcepts $(INCLUDES)
+CFLAGS   = -g -Wall -O2 -std=c++1z -fconcepts $(INCLUDES)
+CXXFLAGS = -g -Wall -O2 -std=c++1z -fconcepts $(INCLUDES)
 
-LDFLAGS = 
+LDFLAGS = -g
 LDLIBS  = -lpthread
 
 .PHONY: default

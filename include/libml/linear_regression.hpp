@@ -32,7 +32,7 @@ public:
 	friend std::istream& operator>>(std::istream& is, LinearRegression& lr);
 
 	// The Linear Regression Objective value
-	double obj(std::vector<double> beta, std::vector<std::vector<double>> train_data, std::vector<double> train_labels)
+	double obj(std::vector<double>& beta, std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
 	{
 		std::vector<double> d(train_labels.size());
 		for (int i = 0; i < train_labels.size(); i++)
@@ -115,7 +115,7 @@ public:
 	}
 
 	// Regress on the model for test data
-	std::vector<double> regress(std::vector<std::vector<double>> test_data)
+	std::vector<double> regress(std::vector<std::vector<double>>& test_data)
 	{
 		if (test_data[0].size() != this->beta.size())
 		{
