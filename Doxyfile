@@ -1,0 +1,20 @@
+PROJECT_NAME     = "libml"
+PROJECT_BRIEF    = "A modern machine learning library based on the C++ Concepts TS"
+OUTPUT_DIRECTORY = "doc"
+INPUT            = "include/"
+FILE_PATTERNS    = "*.hpp"
+RECURSIVE        = YES
+
+EXTRACT_ALL      = YES
+EXTRACT_STATIC   = YES
+SHOW_DIRECTORIES = YES
+SOURCE_BROWSER   = YES
+USE_MATHJAX      = YES
+PAPER_TYPE       = letter
+HAVE_DOT         = NO
+CALL_GRAPH       = YES
+CALLER_GRAPH     = YES
+
+MULTILINE_CPP_IS_BRIEF = YES
+HTML_DYNAMIC_SECTIONS  = YES
+HIDE_UNDOC_RELATIONS   = NO
