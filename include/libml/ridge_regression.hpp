@@ -40,10 +40,10 @@ public:
 		{
 			d[i] = inner_product(train_data[i].begin(), train_data[i].end(), beta.begin(), 0.0) ;
 			d[i] = d[i] - train_labels[i];
-			d[i] = pow(d[i], 2) ;
+			d[i] = 0.5 * pow(d[i], 2) ;
 			d[i] += 0.5 * lambda * norm2(beta);
 		}
-		return accumulate(d.begin(), d.end(), 0.0) / (2 * train_data.size());
+		return accumulate(d.begin(), d.end(), 0.0) / (train_data.size());
 	}
 
 

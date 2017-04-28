@@ -93,7 +93,7 @@ public:
 			
 			for (std::size_t i = 0; i < train_data[0].size(); i++)
 			{
-				beta[i] = beta[i] - alpha * (g[i] + (lambda/train_labels.size()) * beta[i]);
+				beta[i] = beta[i] - alpha * (g[i] + (lambda/train_labels.size()));
 			}
 
 			if (verbose)
