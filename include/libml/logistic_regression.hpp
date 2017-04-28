@@ -39,6 +39,9 @@ public:
     using Data_type = libml::matrix2<int>;
     using Label_type = std::vector<int>;
 
+    using Data_primitive = int;
+    using Label_primitive = int;
+
     Data_type d;
     Label_type l;
 

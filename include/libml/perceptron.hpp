@@ -6,6 +6,7 @@
 #include <numeric>
 #include <fstream>
 #include <vector>
+#include <stdexcept>
 #include "helpers.hpp"
 #include "concepts.hpp"
 
@@ -19,6 +20,9 @@ public:
 	using Data_type = libml::matrix2<int>;
 	using Label_type = std::vector<int>;
 
+        using Data_primitive = int;
+        using Label_primitive = int;
+
 	Data_type d;
 	Label_type l;
 
@@ -28,33 +32,32 @@ public:
 	//LabelsforClassification l= new LabelsforClassification();
 	
 	void train(Data_type& x, Label_type& y) {
-		std::ofstream f;
+                std::ofstream f;
 		f.open ("trainingweights.txt");
-
-		// TODO: Need to make sure that every data entry
-		// has the same number of features and throw an
-		// exception if not.
 		int numberoffeatures=x[0].size()+1;
 		int numberofexamples=x.size();
 
+
+		if (x.size() != y.size())
+		{
+        	throw std::invalid_argument( "No. of rows in Train data and Train Labels must be equal");
+		}
+
+
+
+		//Initialize the weights vector to zero
 		for(int i=0;i<numberoffeatures;i++)
 			weights.push_back(0);
 
+
+		//Prepend ones to the x values 
 		for(int i=0;i<numberofexamples;i++)
 		{
 			x[i].insert(x[i].begin(),1);
 		}
 
-		std::cout<<"Data size"<<x[0].size();
-		for(int i=0;i<numberofexamples;i++)
-		{
-			for(int j=0;j<numberoffeatures;j++)
-			{
-				std::cout << x[i][j] << " ";
-			}
-			std::cout << std::endl;
-		}
-
+		
+		//Train the classifier untill all the examples are correctly classified
 		int flag=1;
 		while(flag==1)
 		{
@@ -69,14 +72,14 @@ public:
 				}
 			}
 			int j;
+
+			//Write the weight vectors to a file
 			for(j=0;j<numberoffeatures-1;j++)
 			{
 			f<<weights[j]<<",";
 			}
 			f<<weights[j]<<"\n";
 		}
-
-		std::cout<<"train the model\n";
 	}
 
         std::vector<int> classify(Data_type& x) {

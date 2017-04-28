@@ -17,6 +17,7 @@ private:
 public:
 
         using Data_type = libml::matrix2<double>;
+        using Data_primitive = double;
 
         std::vector<std::vector<double>> init_centroids(std::vector<std::vector<double>>& train_data)
 	{

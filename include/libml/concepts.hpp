@@ -50,11 +50,11 @@ concept bool Regression = requires()
 	typename T::Data_type;
 	typename T::Label_type;
 
-	typename T::Data_type::value_type::value_type; // This is a bad hack!
-	typename T::Label_type::value_type;
+        typename T::Data_primitive;
+        typename T::Label_primitive;
 
-	requires Data<typename T::Data_type, typename T::Data_type::value_type::value_type>();
-	requires Labels<typename T::Label_type, typename T::Label_type::value_type>();
+	requires Data<typename T::Data_type, typename T::Data_primitive>();
+	requires Labels<typename T::Label_type, typename T::Label_primitive>();
 
 } && requires(T t, typename T::Data_type d, typename T::Label_type l) {
 	t.train(d,l);
@@ -67,11 +67,11 @@ concept bool Classification = requires()
 	typename T::Data_type;
 	typename T::Label_type;
 
-	typename T::Data_type::value_type::value_type; // This is a bad hack!
-	typename T::Label_type::value_type;
+	typename T::Data_primitive;
+	typename T::Label_primitive;
 
-	requires Data<typename T::Data_type, typename T::Data_type::value_type::value_type>();
-	requires Labels<typename T::Label_type, typename T::Label_type::value_type>();
+	requires Data<typename T::Data_type, typename T::Data_primitive>();
+	requires Labels<typename T::Label_type, typename T::Label_primitive>();
 
 } && requires(T t, typename T::Data_type d, typename T::Label_type l) {
 	t.train(d,l);
@@ -82,9 +82,9 @@ template<typename T>
 concept bool UnsupervisedClassification = requires()
 {
 	typename T::Data_type;
-	typename T::Data_type::value_type::value_type; // This is a bad hack!
+	typename T::Data_primitive;
 
-	requires Data<typename T::Data_type, typename T::Data_type::value_type::value_type>();
+	requires Data<typename T::Data_type, typename T::Data_primitive>();
 
 } && requires(T t, typename T::Data_type d) {
 	t.train(d);

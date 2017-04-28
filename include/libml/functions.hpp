@@ -32,7 +32,7 @@ typename T::Label_type predict_classification(T& lr, typename T::Data_type& test
 template<typename T>
 void train_unsupervised(T& lr, typename T::Data_type& train_data) requires UnsupervisedClassification<T>
 {
-	lr.train(train_data);
+	lr.classify(train_data);
 }
 
 

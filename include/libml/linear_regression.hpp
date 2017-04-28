@@ -48,6 +48,9 @@ public:
         using Data_type = libml::matrix2<double>;
         using Label_type = std::vector<double>;
 
+        using Data_primitive = double;
+        using Label_primitive = double;
+
 // def obj(beta, x, y):
 // 	return (np.power((np.dot(x, beta) - y), 2).sum() / (2*x.shape[0]))
 
@@ -166,7 +169,7 @@ public:
 		return predicted_values;
 	}
 
-	LinearRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 0)   
+	LinearRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 1)   
         : alpha(alpha), maxIter(maxIter), tol(tol), fit_intercept(fit_intercept), verbose(verbose) // member init list  
 	{
 	}
