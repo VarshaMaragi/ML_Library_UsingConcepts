@@ -1,5 +1,0 @@
-Extract the boost library into this folder
-
-Run the following:
-
-g++ -I ./boost_1_63_0/ --std=c++1z -fconcepts Projectmain.cpp
