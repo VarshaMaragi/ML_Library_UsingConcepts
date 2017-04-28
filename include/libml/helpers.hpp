@@ -80,7 +80,7 @@ double norm2(std::vector<double> x)
 	double val = 0;
 	for (int i = 0; i < x.size(); i++)
 	{
-		val += pow(x[i], 2)
+		val += pow(x[i], 2);
 	}
 	return sqrt(val);
 }

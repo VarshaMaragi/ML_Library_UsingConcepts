@@ -146,7 +146,7 @@ public:
 
 
 	// Linear Regression constructor for initialising the model parameters
-	LinearRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 1)   
+	LinearRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 0)   
         : alpha(alpha), maxIter(maxIter), tol(tol), fit_intercept(fit_intercept), verbose(verbose) // member init list  
 	{
 	}
