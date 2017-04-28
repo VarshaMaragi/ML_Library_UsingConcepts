@@ -176,13 +176,15 @@ int main()
 		s.str(string());
 
 	}*/
+
+        cout<<endl<<"Testing K-Means"<<endl;
 	
 	
 
 	/* ###### K-Means ###### */
 	double d1, d2, d3, d4;
 	string s;
-	io::CSVReader<5> km_data("iris.data.txt");
+	io::CSVReader<5> km_data("data/iris.data.txt");
 	vector<vector<double>> asd;
 	while(km_data.read_row(d1, d2, d3, d4, s))
 	{
