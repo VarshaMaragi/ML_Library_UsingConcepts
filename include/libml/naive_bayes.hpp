@@ -42,7 +42,7 @@ namespace libml {
                 /**
                  * @brief Trains the Naive Bayes model
                  */
-        void train(Data_type& x, Label_type& y)
+        void train(const Data_type& x, Label_type& y)
         {
 
 		if (x.size() != y.size())
@@ -267,7 +267,7 @@ namespace libml {
          * @brief Classifies a set of sample points
          * @return A vector of ints (labels) corresponding to each sample row
          */
-        std::vector<int> classify(Data_type& x)
+        std::vector<int> classify(const Data_type& x)
         {
 		int numberoffeatures=x[0].size();
 		int numberofexamples=x.size();

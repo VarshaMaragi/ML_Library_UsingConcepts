@@ -33,7 +33,11 @@ public:
 	friend std::istream& operator>>(std::istream& is, RidgeRegression& lr);
 
 	// The Ridge Regression Objective value
+<<<<<<< HEAD
 	double obj(std::vector<double> beta, std::vector<std::vector<double>> train_data, std::vector<double> train_labels)
+=======
+	double obj(const std::vector<double>& beta, const Data_type& train_data, const Label_type& train_labels)
+>>>>>>> 52606822844d34ea4feabd3b3ee338419f033e2d
 	{
 		std::vector<double> d(train_labels.size());
 		for (int i = 0; i < train_labels.size(); i++)
@@ -48,7 +52,7 @@ public:
 
 
 	// Calculating the gradient
-	std::vector<double> grad(std::vector<double>& beta, std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
+	std::vector<double> grad(const std::vector<double>& beta, const Data_type& train_data, const Label_type& train_labels)
 	{
 		std::vector<double> d(train_labels.size());
 		std::vector<double> gradient(train_data[0].size(), 0);
@@ -77,7 +81,7 @@ public:
 	}
 
 	// Train the Ridge regression model
-	void train(std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
+	void train(const Data_type& train_data, const Label_type& train_labels)
 	{
 		if (train_data.size() != train_labels.size())
 		{
@@ -117,7 +121,11 @@ public:
 	}
 
 	// Regress on the model for test data
+<<<<<<< HEAD
 	std::vector<double> regress(std::vector<std::vector<double>> test_data)
+=======
+	std::vector<double> regress(const Data_type& test_data)
+>>>>>>> 52606822844d34ea4feabd3b3ee338419f033e2d
 	{
 		if (test_data[0].size() != this->beta.size())
 		{

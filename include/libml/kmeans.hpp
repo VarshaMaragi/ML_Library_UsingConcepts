@@ -38,7 +38,7 @@ public:
          * selected at first before creating clusters where samples
          * are associated with the nearest means until convergence.
          */
-    std::vector<std::vector<double>> init_centroids(std::vector<std::vector<double>>& train_data)
+    std::vector<std::vector<double>> init_centroids(const Data_type& train_data)
 	{
         std::vector<std::vector<double>> centroids;
 		for (int i = 0; i < k; i++)
@@ -53,7 +53,7 @@ public:
 	/**
          * @brief Finds the mean of a cluster
          */
-    std::vector<double> cluster_mean(std::vector<std::vector<double>>& cluster)
+    std::vector<double> cluster_mean(const std::vector<std::vector<double>>& cluster)
     {
             std::vector<double> clmean(cluster[0].size(), 0);
 		for (int j = 0; j < cluster[0].size(); j++)
@@ -71,7 +71,7 @@ public:
      * @brief Finds the new centroids of each cluster
      * @return A vector storing vectors of training data rows. Each higher-order vector is a centroid.
      */
-    std::vector<std::vector<double>> calculate_centroids(auto& clusters, std::vector<std::vector<double>>& train_data)
+    std::vector<std::vector<double>> calculate_centroids(const auto& clusters, const Data_type& train_data)
 	{	
 		int n_features = train_data[0].size();
                 std::vector<std::vector<double>> centroids(k, std::vector<double>(n_features));
@@ -86,7 +86,7 @@ public:
 	/**
          * @brief Finds the closest centroid for a sample
          */
-	int closest_centroid(auto& sample, auto& centroids)
+	int closest_centroid(const auto& sample, const auto& centroids)
 	{
 		double closest_distance = std::numeric_limits<double>::infinity();
 		int closest_i = 0;
@@ -107,7 +107,7 @@ public:
          * @return A vector of centroids
          * @see KMeans::calculate_centroids
          */
-    std::vector<std::vector<std::vector<double>>> create_clusters(std::vector<std::vector<double>>& centroids, std::vector<std::vector<double>>& train_data)
+    std::vector<Data_type> create_clusters(const std::vector<std::vector<double>>& centroids, const Data_type& train_data)
 	{
 		auto n_samples = train_data.size();
                 std::vector<std::vector<std::vector<double>>> clusters(3);
@@ -124,7 +124,7 @@ public:
      * @brief Flags if two sets of centroids are divergent
      * @return true if the centroids differ, false otherwise
      */
-	bool diff(auto& centroids, auto& prev_centroids)
+	bool diff(const auto& centroids, const auto& prev_centroids)
 	{
 		for (auto c1: centroids)
 		{
@@ -148,7 +148,7 @@ public:
          * @brief Labels clusters corresponding to a set of training data
          * @return A vector of labels, each row corresponding to a row of training data
          */
-    std::vector<int> cluster_labels(auto& clusters,auto& train_data)
+    std::vector<int> cluster_labels(const auto& clusters, const auto& train_data)
 	{
                 std::vector<int> pred_labels;
 		for (auto ex : train_data)
@@ -171,7 +171,7 @@ public:
     /**
      * @brief Classifies a set of training data and returns a set of labels
      */
-    std::vector<int> classify(std::vector<std::vector<double>>& train_data)
+    std::vector<int> classify(const Data_type& train_data)
 	{
         std::vector<std::vector<double>> centroids = init_centroids(train_data);
         std::vector<std::vector<double>> prev_centroids;
