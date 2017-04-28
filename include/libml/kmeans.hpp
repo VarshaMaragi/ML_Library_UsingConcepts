@@ -1,3 +1,8 @@
+/**
+ * @file kmeans.hpp
+ * @brief Contains the k-means implementation
+ */
+
 #ifndef LIBML_KMEANS_HPP
 #define LIBML_KMEANS_HPP
 
@@ -9,6 +14,13 @@
 
 namespace libml {
 
+/**
+ * @brief k-means clustering model
+ *
+ * K-means is an #UnsupervisedClassification algorithm used for partitioning
+ * samples into clusters where each sample in a cluster averages to a mean
+ * close to the value of the samples.
+ */
 class KMeans{
 private:
 	int k;
@@ -18,7 +30,14 @@ public:
 
         using Data_type = libml::matrix2<double>;
         using Data_primitive = double;
-	// Initialise random centroids
+
+        /**
+         * @brief Initializes random centroids for k-means
+         *
+         * Used when initializing the k-means model. Random means are
+         * selected at first before creating clusters where samples
+         * are associated with the nearest means until convergence.
+         */
     std::vector<std::vector<double>> init_centroids(std::vector<std::vector<double>>& train_data)
 	{
         std::vector<std::vector<double>> centroids;
@@ -31,8 +50,10 @@ public:
 		return centroids;
 	}
 
-	// Find mean of the cluster
-    std::vector<double> cluster_mean(std::vector<std::vector<double>> cluster)
+	/**
+         * @brief Finds the mean of a cluster
+         */
+    std::vector<double> cluster_mean(std::vector<std::vector<double>>& cluster)
     {
             std::vector<double> clmean(cluster[0].size(), 0);
 		for (int j = 0; j < cluster[0].size(); j++)
@@ -46,7 +67,10 @@ public:
 		return clmean;
     }
 
-    // Find centroids as mean
+    /**
+     * @brief Finds the new centroids of each cluster
+     * @return A vector storing vectors of training data rows. Each higher-order vector is a centroid.
+     */
     std::vector<std::vector<double>> calculate_centroids(auto clusters, std::vector<std::vector<double>>& train_data)
 	{	
 		int n_features = train_data[0].size();
@@ -59,7 +83,9 @@ public:
 		return centroids;
 	}
 	
-	// Get the closest centroid
+	/**
+         * @brief Finds the closest centroid for a sample
+         */
 	int closest_centroid(auto& sample, auto& centroids)
 	{
 		double closest_distance = std::numeric_limits<double>::infinity();
@@ -76,7 +102,11 @@ public:
 		return closest_i;
 	}
 
-	// Create clusters 
+	/**
+         * @brief Creates new clusters based on a set of centroids and training data
+         * @return A vector of centroids
+         * @see KMeans::calculate_centroids
+         */
     std::vector<std::vector<std::vector<double>>> create_clusters(std::vector<std::vector<double>>& centroids, std::vector<std::vector<double>>& train_data)
 	{
 		auto n_samples = train_data.size();
@@ -90,6 +120,10 @@ public:
 		return clusters;
 	}
 
+    /**
+     * @brief Flags if two sets of centroids are divergent
+     * @return true if the centroids differ, false otherwise
+     */
 	bool diff(auto centroids, auto prev_centroids)
 	{
 		for (auto c1: centroids)
@@ -110,7 +144,10 @@ public:
 		return 0;
 	}
 	
-	// Cluster labels
+	/**
+         * @brief Labels clusters corresponding to a set of training data
+         * @return A vector of labels, each row corresponding to a row of training data
+         */
     std::vector<int> cluster_labels(auto clusters,auto train_data)
 	{
                 std::vector<int> pred_labels;
@@ -131,11 +168,9 @@ public:
 		return pred_labels;
 	}
 
-    // void train(Data_type& data) {
-    //             // FIXME
-    //             throw std::logic_error("Not implemented");
-    //     }
-	
+    /**
+     * @brief Classifies a set of training data and returns a set of labels
+     */
     std::vector<int> classify(std::vector<std::vector<double>>& train_data)
 	{
         std::vector<std::vector<double>> centroids = init_centroids(train_data);
@@ -156,6 +191,16 @@ public:
 		return cluster_labels(clusters, train_data);
 	}
 
+    /**
+     * @brief Initializes the k-means model
+     * @param k The number of means (clusters) to generate
+     * @param maxIter The maximum number of iterations to run the model for
+     *
+     * @note
+     * k-means is computationally expensive, especially on large datasets,
+     * so maxIter should not be excessively large in an attempt to gain
+     * more accuracy.
+     */
 	KMeans(int k = 3, double maxIter = 100)
 	: k(k), maxIter(maxIter)
 	{}

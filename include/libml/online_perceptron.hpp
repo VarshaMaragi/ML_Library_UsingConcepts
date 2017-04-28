@@ -1,3 +1,8 @@
+/**
+ * @file online_perceptron.hpp
+ * @brief Contains the online perceptron implementation
+ */
+
 #ifndef LIBML_ONLINE_PERCEPTRON_HPP
 #define LIBML_ONLINE_PERCEPTRON_HPP
 
@@ -15,6 +20,19 @@
 
 namespace libml {
 
+        /**
+         * @brief The online perceptron classifier
+         *
+         * The online version of the #Perceptron. Rather than
+         * accepting a pre-created set of data during training,
+         * the online perceptron accepts a stream of data and
+         * continues to read from it until the stream is closed.
+         *
+         * Because the online perceptron is constantly adapting,
+         * there is no dedicated method for training.
+         *
+         * @see OnlineLearningClassify
+         */
         class OnlinePerceptron
         {
                 public:
@@ -33,6 +51,9 @@ namespace libml {
                         //Check if weights are initialized
                         bool initialised = 0;
 
+                        /**
+                         * @brief Trains the perceptron on a stream of data and stores classifications
+                         */
                         void classify(std::stringstream &x, std::stringstream &y)
                         {
                                 std::string s;

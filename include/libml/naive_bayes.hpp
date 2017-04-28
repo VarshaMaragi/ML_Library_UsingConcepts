@@ -1,3 +1,8 @@
+/**
+ * @file naive_bayes.hpp
+ * @brief Contains the Naive Bayes classification implementation
+ */
+
 #ifndef LIBML_NAIVEBAYES_H
 #define LIBML_NAIVEBAYES_H
 
@@ -11,6 +16,12 @@
 #include "perceptron.hpp"
 
 namespace libml {
+        /**
+         * @brief Naive Bayes classification model
+         *
+         * Naive Bayes is a #Classification model that
+         * probabilistically classifies sets of features.
+         */
         class NaiveBayes
         {
                 public:
@@ -28,6 +39,9 @@ namespace libml {
                         std::vector<std::vector<float>> logoneminusparameter;
                         std::map<int, int> prior;
 
+                /**
+                 * @brief Trains the Naive Bayes model
+                 */
         void train(Data_type& x, Label_type& y)
         {
 
@@ -249,6 +263,10 @@ namespace libml {
 		}
         }
 
+        /**
+         * @brief Classifies a set of sample points
+         * @return A vector of ints (labels) corresponding to each sample row
+         */
         std::vector<int> classify(Data_type& x)
         {
 		int numberoffeatures=x[0].size();
