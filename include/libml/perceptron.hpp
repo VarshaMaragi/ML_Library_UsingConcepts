@@ -92,14 +92,15 @@ public:
 					flag=1;
 				}
 			}
-			int j;
 
 			//Write the weight vectors to a file
-			for(std::size_t j=0;j<numberoffeatures-1;j++)
+                        std::size_t j;
+			for (j = 0; j < numberoffeatures - 1; j++)
 			{
-			f<<weights[j]<<",";
+        			f << weights[j] << ",";
 			}
-			f<<weights[j]<<"\n";
+
+			f << weights[j] << std::endl;
 		}
 	}
 

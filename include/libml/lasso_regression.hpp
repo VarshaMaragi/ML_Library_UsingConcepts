@@ -27,7 +27,13 @@ public:
     using Data_primitive = double;
     using Label_primitive = double;
 
-	// Operations for saving and restoring the state of the regression
+	// Lasso Regression constructor for initialising the model parameters
+	LassoRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 0, double lambda = 0.1)
+        : alpha(alpha), maxIter(maxIter), tol(tol), fit_intercept(fit_intercept), verbose(verbose), lambda(lambda) // member init list  
+	{
+	}
+
+        // Operations for saving and restoring the state of the regression
 	// after initial training.
 	friend std::ostream& operator<<(std::ostream& os, const LassoRegression& lr);
 	friend std::istream& operator>>(std::istream& is, LassoRegression& lr);
@@ -64,7 +70,7 @@ public:
 
 		for (std::size_t i = 0; i < train_data[0].size(); i++)
 		{
-			for(int j = 0; j < train_data.size(); j++)
+			for(std::size_t j = 0; j < train_data.size(); j++)
 			{
 				col[j] = train_data[j][i];
 			}
@@ -143,14 +149,6 @@ public:
 			std::cout << p << std::endl;
 		}
 		return predicted_values;
-	}
-
-
-
-	// Lasso Regression constructor for initialising the model parameters
-	LassoRegression(double lambda = 0.1, double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 0)   
-        : lambda(lambda), alpha(alpha), maxIter(maxIter), tol(tol), fit_intercept(fit_intercept), verbose(verbose) // member init list  
-	{
 	}
 };
 

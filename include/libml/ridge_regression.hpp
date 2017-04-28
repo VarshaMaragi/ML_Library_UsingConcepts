@@ -12,14 +12,15 @@
 namespace libml {
 class RidgeRegression{
 public:
-	double alpha;
+	double lambda;
+        double alpha;
 	double maxIter;
 	double tol;
 	std::string method;
 	bool fit_intercept;
 	bool verbose;
 	std::vector<double> beta;
-	double lambda;
+
 
     using Data_type = libml::matrix2<double>;
     using Label_type = std::vector<double>;

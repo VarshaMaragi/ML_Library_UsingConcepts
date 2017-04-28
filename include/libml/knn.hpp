@@ -64,7 +64,6 @@ namespace libml {
                                 std::ofstream f;
                                 f.open ("outputknn.txt");
                                 Data_type x = d;
-                                std::size_t numberoffeatures=x[0].size();
                                 std::size_t numberofexamples=x.size();
 
 
