@@ -33,17 +33,17 @@ public:
 	friend std::istream& operator>>(std::istream& is, RidgeRegression& lr);
 
 	// The Ridge Regression Objective value
-	double obj(std::vector<double>& beta, std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
+	double obj(std::vector<double> beta, std::vector<std::vector<double>> train_data, std::vector<double> train_labels)
 	{
 		std::vector<double> d(train_labels.size());
 		for (int i = 0; i < train_labels.size(); i++)
 		{
 			d[i] = inner_product(train_data[i].begin(), train_data[i].end(), beta.begin(), 0.0) ;
 			d[i] = d[i] - train_labels[i];
-			d[i] = pow(d[i], 2) ;
+			d[i] = 0.5 * pow(d[i], 2) ;
 			d[i] += 0.5 * lambda * norm2(beta);
 		}
-		return accumulate(d.begin(), d.end(), 0.0) / (2 * train_data.size());
+		return accumulate(d.begin(), d.end(), 0.0) / (train_data.size());
 	}
 
 
@@ -117,7 +117,7 @@ public:
 	}
 
 	// Regress on the model for test data
-	std::vector<double> regress(std::vector<std::vector<double>>& test_data)
+	std::vector<double> regress(std::vector<std::vector<double>> test_data)
 	{
 		if (test_data[0].size() != this->beta.size())
 		{
