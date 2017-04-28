@@ -46,7 +46,7 @@ namespace libml {
                         /**
                          * @brief Trains the k-NN model
                          */
-                        void train(Data_type& x, Label_type& y)
+                        void train(const Data_type& x, const Label_type& y)
                         {
                                 if (x.size() != y.size())
                                 {
@@ -59,7 +59,7 @@ namespace libml {
                          * @brief Classifies a set of sample points
                          * @return A vector of ints (labels) corresponding to each sample row
                          */
-                        std::vector<int> classify(Data_type& testdata)
+                        std::vector<int> classify(const Data_type& testdata)
                         {
                                 std::ofstream f;
                                 f.open ("outputknn.txt");

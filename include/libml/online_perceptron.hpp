@@ -54,7 +54,7 @@ namespace libml {
                         /**
                          * @brief Trains the perceptron on a stream of data and stores classifications
                          */
-                        void classify(std::stringstream &x, std::stringstream &y)
+                        void classify(Data_type &x, Label_type &y)
                         {
                                 std::string s;
 

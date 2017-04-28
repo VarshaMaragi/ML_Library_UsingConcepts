@@ -52,7 +52,7 @@ public:
         /**
          * @brief Trains the perceptron on a pre-created set of data
          */
-	void train(Data_type& x, Label_type& y) {
+	void train(Data_type& x, const Label_type& y) {
                 std::ofstream f;
 		f.open ("trainingweights.txt");
 		int numberoffeatures=x[0].size()+1;
