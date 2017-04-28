@@ -63,7 +63,7 @@ std::vector<double> calculate_std(matrix2<double>& train_data)
  *
  * Accuracy is a measure of 1 - (number of errors the model makes / total number of samples)
  */
-float accuracy(std::vector<int> a, std::vector<int> b)
+float accuracy(std::vector<int>& a, std::vector<int>& b)
 {
 	float sum=0;
         float accuracy;
@@ -81,7 +81,7 @@ float accuracy(std::vector<int> a, std::vector<int> b)
 /**
  * @brief Calculates the euclidean distance between two vectors
  */
-double euclidean_distance(std::vector<double> x, std::vector<double> y)
+double euclidean_distance(std::vector<double>& x, std::vector<double>& y)
 {
 	double dist = 0;
 	for(int i = 0; i < x.size(); i++)
@@ -92,12 +92,12 @@ double euclidean_distance(std::vector<double> x, std::vector<double> y)
 }
 
 // L2 Norm of a vector
-double norm2(std::vector<double> x)
+double norm2(std::vector<double>& x)
 {
 	double val = 0;
 	for (int i = 0; i < x.size(); i++)
 	{
-		val += pow(x[i], 2)
+		val += pow(x[i], 2);
 	}
 	return sqrt(val);
 }

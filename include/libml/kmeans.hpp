@@ -71,7 +71,7 @@ public:
      * @brief Finds the new centroids of each cluster
      * @return A vector storing vectors of training data rows. Each higher-order vector is a centroid.
      */
-    std::vector<std::vector<double>> calculate_centroids(auto clusters, std::vector<std::vector<double>>& train_data)
+    std::vector<std::vector<double>> calculate_centroids(auto& clusters, std::vector<std::vector<double>>& train_data)
 	{	
 		int n_features = train_data[0].size();
                 std::vector<std::vector<double>> centroids(k, std::vector<double>(n_features));
@@ -124,7 +124,7 @@ public:
      * @brief Flags if two sets of centroids are divergent
      * @return true if the centroids differ, false otherwise
      */
-	bool diff(auto centroids, auto prev_centroids)
+	bool diff(auto& centroids, auto& prev_centroids)
 	{
 		for (auto c1: centroids)
 		{
@@ -148,7 +148,7 @@ public:
          * @brief Labels clusters corresponding to a set of training data
          * @return A vector of labels, each row corresponding to a row of training data
          */
-    std::vector<int> cluster_labels(auto clusters,auto train_data)
+    std::vector<int> cluster_labels(auto& clusters,auto& train_data)
 	{
                 std::vector<int> pred_labels;
 		for (auto ex : train_data)
