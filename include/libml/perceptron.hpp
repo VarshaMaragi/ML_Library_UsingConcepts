@@ -83,7 +83,7 @@ public:
 	}
 
         std::vector<int> classify(Data_type& x) {
-                std::cout<<"classify the data\n";
+               // std::cout<<"classify the data\n";
                 std::vector<int> predy;
 		for(int i=0;i<x.size();i++)
 		{

@@ -44,7 +44,7 @@ namespace libml {
 		int numberofexamples=x.size();
 		
 
-                std::cout<<"Data size"<<x[0].size();
+               
                 std::vector<std::vector<int>> transpose_x;
 		//transpose_x = boost::numeric::ublas::trans(x);
 		for(int i=0;i<numberofexamples;i++)
@@ -63,11 +63,11 @@ namespace libml {
                         std::vector<int> temp;
 			for(int j=0;j<numberofexamples;j++)
 			{
-                                std::cout<<x[j][i]<<" ";
+                                
 				temp.push_back(x[j][i]	);
 			}
 			transpose_x.push_back(temp);
-                        std::cout<<std::endl;
+                        
 		}
 
 
@@ -114,8 +114,8 @@ namespace libml {
 		}
 		
 		it2=labelsmatrix.begin();
-                std::vector<std::vector<float>> parameter;
-                std::vector<int> sumoflabelsmatrix;
+        std::vector<std::vector<float>> parameter;
+        std::vector<int> sumoflabelsmatrix;
 
 		//Calculate the parameter matrix(x*labelsmatrix)
 		while(it2!=labelsmatrix.end())
@@ -124,15 +124,7 @@ namespace libml {
 			for(int j=0;j<numberoffeatures;j++)
 			{
 				
-				for(int k=0;k<it2->second.size();k++)
-				{
-                                        std::cout<<it2->second[k];
-				}
 				
-				for(int k=0;k<transpose_x[j].size();k++)
-				{
-                                        std::cout<<transpose_x[j][k];
-				}
 				
 				float ip=inner_product(begin(it2->second), end(it2->second), begin(transpose_x[j]), 0);
 
@@ -167,7 +159,7 @@ namespace libml {
 				
 				temp2.push_back(log(1-(parameter[i][j])));
 			}
-                        std::cout<<std::endl;
+                        //std::cout<<std::endl;
 			logparameter.push_back(temp1);
 			logoneminusparameter.push_back(temp2);
 		
@@ -252,7 +244,7 @@ namespace libml {
 			}
 			predy.push_back(py);
 			//Print the predicted y values for the training dataset
-                        std::cout<<py<<std::endl;
+            //std::cout<<py<<std::endl;
 
 		}
         }
@@ -274,7 +266,7 @@ namespace libml {
                         std::vector<int> temp;
 			for(int j=0;j<numberofexamples;j++)
 			{
-                                std::cout<<x[j][i]<<" ";
+                                
 				temp.push_back(x[j][i]	);
 			}
 			transpose_x.push_back(temp);
@@ -282,7 +274,7 @@ namespace libml {
 		}
 
 
-                std::cout<<"classify the data(NaiveBayes)\n";
+                
 
 
 		//As it is Bernoulli calculate (1-x) for test data
@@ -362,7 +354,7 @@ namespace libml {
 			}
 			predy.push_back(py);
 			//Print predicted y values
-                        std::cout<<py<<std::endl;
+            //std::cout<<py<<std::endl;
 
 		}
 

@@ -37,7 +37,7 @@ namespace libml {
                                 {
                                         throw std::invalid_argument( "No. of rows in Train data and Train Labels must be equal");
                                 }
-                                std::cout<<"Knn training is trivial"<<std::endl;
+                                
                         };
 
                         std::vector<int> classify(Data_type& testdata)
@@ -107,11 +107,11 @@ namespace libml {
 
 
                                 //Print the predicted y values
-                                std::cout<<"KNN predicted values"<<std::endl;
-                                for(int j=0;j<predy.size();j++)
-                                {
-                                        std::cout<<predy[j];
-                                }
+                                // std::cout<<"KNN predicted values"<<std::endl;
+                                // for(int j=0;j<predy.size();j++)
+                                // {
+                                //         std::cout<<predy[j];
+                                // }
 
                                 return predy;
                         };
