@@ -197,7 +197,7 @@ int main()
                 libml::OnlinePerceptron::Data_type s;
 		s<<line;
 		//Pass the csv stream
-                libml::train_classification(op,s,l);
+                libml::classify_online(op,s,l);
 		s.str(string());
 
 	}
