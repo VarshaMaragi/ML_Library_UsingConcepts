@@ -7,6 +7,7 @@
 #define LIBML_HELPER_HPP
 
 #include <cmath>
+#include <cstddef>
 #include <vector>
 
 namespace libml {
@@ -20,13 +21,13 @@ using matrix2 = std::vector<std::vector<T>>;
  */
 std::vector<double> calculate_mean(const matrix2<double>& train_data)
 {
-	int nSamples = train_data.size();
-	int nDimensions = train_data[0].size();
+        std::size_t nSamples = train_data.size();
+        std::size_t nDimensions = train_data[0].size();
 	std::vector<double> mean(train_data[0].size(),0);
 	
-	for (int j = 0; j < nDimensions; j++)
+	for (std::size_t j = 0; j < nDimensions; j++)
 	{
-		for (int i = 0; i < nSamples; i++)
+		for (std::size_t i = 0; i < nSamples; i++)
 		{
 			mean[j] += train_data[i][j];
 		}
@@ -41,14 +42,14 @@ std::vector<double> calculate_mean(const matrix2<double>& train_data)
  */
 std::vector<double> calculate_std(const matrix2<double>& train_data)
 {
-	int nSamples = train_data.size();
-	int nDimensions = train_data[0].size();
+        std::size_t nSamples = train_data.size();
+        std::size_t nDimensions = train_data[0].size();
 	std::vector<double> mean = calculate_mean(train_data);
 	std::vector<double> std(train_data[0].size(),0);
 
-	for (int j = 1; j < nDimensions; j++)
+	for (std::size_t j = 1; j < nDimensions; j++)
 	{
-		for (int i = 0; i < nSamples; i++)
+		for (std::size_t i = 0; i < nSamples; i++)
 		{
 			std[j] += pow(train_data[i][j] - mean[j], 2);
 		}
@@ -68,7 +69,7 @@ float accuracy(const std::vector<int>& a, const std::vector<int>& b)
 	float sum=0;
         float accuracy;
 
-	for(int i=0;i<a.size();i++)
+	for(std::size_t i=0;i<a.size();i++)
 	{
 		if(a[i]!=b[i])
 			sum=sum+1;
@@ -84,7 +85,7 @@ float accuracy(const std::vector<int>& a, const std::vector<int>& b)
 double euclidean_distance(const std::vector<double>& x, const std::vector<double>& y)
 {
 	double dist = 0;
-	for(int i = 0; i < x.size(); i++)
+	for(std::size_t i = 0; i < x.size(); i++)
 	{
 		dist += pow(x[i] - y[i], 2);
 	}
@@ -95,7 +96,7 @@ double euclidean_distance(const std::vector<double>& x, const std::vector<double
 double norm2(const std::vector<double>& x)
 {
 	double val = 0;
-	for (int i = 0; i < x.size(); i++)
+	for (std::size_t i = 0; i < x.size(); i++)
 	{
 		val += pow(x[i], 2);
 	}
@@ -106,7 +107,7 @@ double norm2(const std::vector<double>& x)
 double norm1(std::vector<double>& x)
 {
 	double val = 0;
-	for (int i = 0; i < x.size(); i++)
+	for (std::size_t i = 0; i < x.size(); i++)
 	{
 		val += std::abs(x[i]);
 	}

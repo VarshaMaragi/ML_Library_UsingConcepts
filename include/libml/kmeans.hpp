@@ -23,7 +23,7 @@ namespace libml {
  */
 class KMeans{
 private:
-	int k;
+        std::size_t k;
 	double maxIter;
 
 public:
@@ -41,7 +41,7 @@ public:
     std::vector<std::vector<double>> init_centroids(const Data_type& train_data)
 	{
         std::vector<std::vector<double>> centroids;
-		for (int i = 0; i < k; i++)
+		for (std::size_t i = 0; i < k; i++)
 		{
 			auto n = rand() % train_data.size();
 			// cout << n << endl;
@@ -56,9 +56,9 @@ public:
     std::vector<double> cluster_mean(const std::vector<std::vector<double>>& cluster)
     {
             std::vector<double> clmean(cluster[0].size(), 0);
-		for (int j = 0; j < cluster[0].size(); j++)
+		for (std::size_t j = 0; j < cluster[0].size(); j++)
 		{
-			for (int i = 0; i < cluster.size(); i++)
+			for (std::size_t i = 0; i < cluster.size(); i++)
 			{
 				clmean[j] += cluster[j][i];
 			}
@@ -75,7 +75,7 @@ public:
 	{	
 		int n_features = train_data[0].size();
                 std::vector<std::vector<double>> centroids(k, std::vector<double>(n_features));
-		for (int i = 0; i < k; i++)
+		for (std::size_t i = 0; i < k; i++)
 		{
 			auto centroid = cluster_mean(clusters[i]);
 			centroids[i] = centroid;
@@ -90,7 +90,7 @@ public:
 	{
 		double closest_distance = std::numeric_limits<double>::infinity();
 		int closest_i = 0;
-		for (int i = 0; i < centroids.size(); i++)
+		for (std::size_t i = 0; i < centroids.size(); i++)
 		{
 			auto distance = libml::euclidean_distance(sample, centroids[i]);
 			if (distance < closest_distance)
@@ -109,10 +109,9 @@ public:
          */
     std::vector<Data_type> create_clusters(const std::vector<std::vector<double>>& centroids, const Data_type& train_data)
 	{
-		auto n_samples = train_data.size();
                 std::vector<std::vector<std::vector<double>>> clusters(3);
 
-		for (auto sample : train_data)
+		for (const auto& sample : train_data)
 		{
 			int centroid_i = closest_centroid(sample, centroids);
 			clusters[centroid_i].push_back(sample);
@@ -124,12 +123,12 @@ public:
      * @brief Flags if two sets of centroids are divergent
      * @return true if the centroids differ, false otherwise
      */
-	bool diff(const auto& centroids, const auto& prev_centroids)
+	bool diff(const std::vector<std::vector<double>>& centroids, const std::vector<std::vector<double>>& prev_centroids)
 	{
-		for (auto c1: centroids)
+		for (const auto& c1: centroids)
 		{
 			int flag = 0;
-			for (auto c2 : prev_centroids)
+			for (const auto& c2 : prev_centroids)
 			{
 				if (c1 == c2)
 				{
@@ -148,20 +147,19 @@ public:
          * @brief Labels clusters corresponding to a set of training data
          * @return A vector of labels, each row corresponding to a row of training data
          */
-    std::vector<int> cluster_labels(const auto& clusters, const auto& train_data)
+    std::vector<int> cluster_labels(const std::vector<std::vector<std::vector<double>>>& clusters, const Data_type& train_data)
 	{
                 std::vector<int> pred_labels;
-		for (auto ex : train_data)
+		for (const auto& ex : train_data)
 		{
-			for (int i = 0; i < clusters.size(); i++)
+			for (std::size_t i = 0; i < clusters.size(); i++)
 			{
-				for (auto elem : clusters[i])
+				for (const auto& elem : clusters[i])
 				{
 					if (elem == ex)
 					{
 						pred_labels.push_back(i);
 					}
-
 				}
 			}
 		}
@@ -201,7 +199,7 @@ public:
      * so maxIter should not be excessively large in an attempt to gain
      * more accuracy.
      */
-	KMeans(int k = 3, double maxIter = 100)
+	KMeans(std::size_t k = 3, double maxIter = 100)
 	: k(k), maxIter(maxIter)
 	{}
 };

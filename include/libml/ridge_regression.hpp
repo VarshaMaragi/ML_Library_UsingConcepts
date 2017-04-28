@@ -36,7 +36,7 @@ public:
 	double obj(const std::vector<double>& beta, const Data_type& train_data, const Label_type& train_labels)
 	{
 		std::vector<double> d(train_labels.size());
-		for (int i = 0; i < train_labels.size(); i++)
+		for (std::size_t i = 0; i < train_labels.size(); i++)
 		{
 			d[i] = inner_product(train_data[i].begin(), train_data[i].end(), beta.begin(), 0.0) ;
 			d[i] = d[i] - train_labels[i];
@@ -53,7 +53,7 @@ public:
 		std::vector<double> d(train_labels.size());
 		std::vector<double> gradient(train_data[0].size(), 0);
 
-		for (int i = 0; i < train_labels.size(); i++)
+		for (std::size_t i = 0; i < train_labels.size(); i++)
 		{
 			d[i] = inner_product(train_data[i].begin(), train_data[i].end(), beta.begin(), 0.0) ;
 			d[i] = d[i] - train_labels[i];
@@ -62,9 +62,9 @@ public:
 		std::vector<double> col(train_labels.size());
 		// cout << "Size:" << train_data[0].size() << endl;
 
-		for (int i = 0; i < train_data[0].size(); i++)
+		for (std::size_t i = 0; i < train_data[0].size(); i++)
 		{
-			for(int j = 0; j < train_data.size(); j++)
+			for(std::size_t j = 0; j < train_data.size(); j++)
 			{
 				col[j] = train_data[j][i];
 			}
@@ -91,7 +91,7 @@ public:
 		{	
 			std::vector<double> g = grad(beta, train_data, train_labels);
 			
-			for (int i = 0; i < train_data[0].size(); i++)
+			for (std::size_t i = 0; i < train_data[0].size(); i++)
 			{
 				beta[i] = beta[i] - alpha * (g[i] + (lambda/train_labels.size()) * beta[i]);
 			}
@@ -131,7 +131,7 @@ public:
 		}
 		
 		std::vector<double> predicted_values(test_data.size());
-		for (int i = 0; i < test_data.size(); i++)
+		for (std::size_t i = 0; i < test_data.size(); i++)
 		{
 			predicted_values[i] = inner_product(test_data[i].begin(), test_data[i].end(), this->beta.begin(), 0.0);
 		}

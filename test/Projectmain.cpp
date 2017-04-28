@@ -24,7 +24,7 @@ int main()
 	vector<vector<int>> parseddata;
 	vector<int> perceptronlabels;
 
-        int col_1, col_2, col_3, col_4, col_5;
+        int col_1, col_2, col_3, col_4;
 
         io::CSVReader<3> in_pinp("data/perceptroninput.csv");
         while(in_pinp.read_row(col_1, col_2, col_3)) {

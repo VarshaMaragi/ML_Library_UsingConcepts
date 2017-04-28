@@ -37,7 +37,7 @@ namespace libml {
 
                         Data_type d;
                         Label_type l;
-                        int k;
+                        std::size_t k;
                         std::vector<int> predy;
 
                         //DataforClassification d=new DataforClassification();
@@ -64,8 +64,8 @@ namespace libml {
                                 std::ofstream f;
                                 f.open ("outputknn.txt");
                                 Data_type x = d;
-                                int numberoffeatures=x[0].size();
-                                int numberofexamples=x.size();
+                                std::size_t numberoffeatures=x[0].size();
+                                std::size_t numberofexamples=x.size();
 
 
                                 /*cout<<"Data size"<<x[0].size();
@@ -80,7 +80,7 @@ namespace libml {
 
                                 std::vector<int> predy;
                                 std::vector<int> y=l;
-                                for(int j=0;j<testdata.size();j++)
+                                for(std::size_t j=0;j<testdata.size();j++)
                                 {
 
                                         std::vector<double> eucdist;
@@ -88,7 +88,7 @@ namespace libml {
                                         //Given one testdata it calculates the Euclidean distance between the given test data and 
                                         //the rest of the example.
 
-                                        for(int i=0;i<numberofexamples;i++)
+                                        for(std::size_t i=0;i<numberofexamples;i++)
                                         {
                                                 std::vector<double> dist;
                                                 std::transform(x[i].begin(), x[i].end(), testdata[j].begin(), std::back_inserter(dist),
@@ -102,7 +102,7 @@ namespace libml {
 
                                         //sort the euclidean distances in ascending order using a vector of pairs
                                         std::vector<std::pair<int,int>> peuc;
-                                        for(int i=0;i<eucdist.size();i++)
+                                        for(std::size_t i=0;i<eucdist.size();i++)
                                         {
                                                 peuc.push_back(std::make_pair(eucdist[i], i));
 
@@ -111,7 +111,7 @@ namespace libml {
                                         sort(peuc.begin(),peuc.end());
 
                                         int classy=0;
-                                        for(int i=0;i<k;i++)
+                                        for(std::size_t i=0;i<k;i++)
                                         {
                                                 //Take the classy of the first k values
                                                 classy=classy+(y[peuc[i].second]);

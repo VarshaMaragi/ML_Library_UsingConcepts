@@ -54,14 +54,14 @@ namespace libml {
                 logparameter.clear();
                 logoneminusparameter.clear();
 		
-		int numberoffeatures=x[0].size();
-		int numberofexamples=x.size();
+                std::size_t numberoffeatures=x[0].size();
+                std::size_t numberofexamples=x.size();
 		
 
                
                 std::vector<std::vector<int>> transpose_x;
 		//transpose_x = boost::numeric::ublas::trans(x);
-		for(int i=0;i<numberofexamples;i++)
+		for(std::size_t i=0;i<numberofexamples;i++)
 		{
 			
 			//If data has a class of -1 convert to 0
@@ -72,10 +72,10 @@ namespace libml {
 
 
 		//calculating the transpose
-		for(int i=0;i<numberoffeatures;i++)
+		for(std::size_t i=0;i<numberoffeatures;i++)
 		{
                         std::vector<int> temp;
-			for(int j=0;j<numberofexamples;j++)
+			for(std::size_t j=0;j<numberofexamples;j++)
 			{
                                 
 				temp.push_back(x[j][i]	);
@@ -94,7 +94,7 @@ namespace libml {
 		labelsmatrix.insert(std::pair<int,std::vector<int>>(0,temp));
 
 		//Calculate the labelsmatrix(a binary matrix of labels for each class).Calculate the prior
-		for(int i=0;i<numberofexamples;i++)
+		for(std::size_t i=0;i<numberofexamples;i++)
 		{
 			it=prior.find(y[i]);
 			if(y[i]==1)
@@ -135,7 +135,7 @@ namespace libml {
 		while(it2!=labelsmatrix.end())
 		{
                         std::vector<float> temp;
-			for(int j=0;j<numberoffeatures;j++)
+			for(std::size_t j=0;j<numberoffeatures;j++)
 			{
 				
 				
@@ -161,11 +161,11 @@ namespace libml {
 		it=prior.begin();
 		
 		//Find the log parameters
-		for(int i=0;i<parameter.size();i++)
+		for(std::size_t i=0;i<parameter.size();i++)
 		{
                         std::vector<float> temp1;
                         std::vector<float> temp2;
-			for(int j=0;j<numberoffeatures;j++)
+			for(std::size_t j=0;j<numberoffeatures;j++)
 			{
 				parameter[i][j]=(1+parameter[i][j])/(2+sumoflabelsmatrix[i]);
 				
@@ -182,10 +182,10 @@ namespace libml {
 
 		//As it is Bernoulli we need (1-x) values.
                 std::vector<std::vector<float>> oneminusx;
-		for(int i=0;i<numberofexamples;i++)
+		for(std::size_t i=0;i<numberofexamples;i++)
 		{
                         std::vector<float> temp;
-			for(int j=0;j<numberoffeatures;j++)
+			for(std::size_t j=0;j<numberoffeatures;j++)
 			{
 				temp.push_back(1-x[i][j]);
 			}
@@ -195,11 +195,11 @@ namespace libml {
 		//Calculate the classifier first term and second term
                 std::vector<std::vector<float>> classifier_first_term;
                 std::vector<std::vector<float>> classifier_second_term;
-		for(int j=0;j<logparameter.size();j++)
+		for(std::size_t j=0;j<logparameter.size();j++)
 		{
                         std::vector<float> temp1;
                         std::vector<float> temp2;
-			for(int i=0;i<numberofexamples;i++)
+			for(std::size_t i=0;i<numberofexamples;i++)
 			{
 				
 			
@@ -219,10 +219,10 @@ namespace libml {
 
 		//Calculate the matrix prob which estimates the y value by addind classifier first,second and third term
                 std::vector<std::vector<float>> prob;
-		for(int i=0;i<classifier_second_term.size();i++)
+		for(std::size_t i=0;i<classifier_second_term.size();i++)
 		{
                         std::vector<float> temp;
-			for(int j=0;j<classifier_second_term[0].size();j++)
+			for(std::size_t j=0;j<classifier_second_term[0].size();j++)
 			{
 				temp.push_back(classifier_second_term[i][j]+classifier_first_term[i][j]);
 			}
@@ -231,9 +231,9 @@ namespace libml {
 
 		//Adding prior to the matrix prob
 		it=prior.begin();
-		for(int i=0;i<parameter.size();i++)
+		for(std::size_t i=0;i<parameter.size();i++)
 		{
-			for(int j=0;j<parameter[0].size();j++)
+			for(std::size_t j=0;j<parameter[0].size();j++)
 			{
 				prob[i][j]=prob[i][j]+(prior[it->first]);
 			}
@@ -242,12 +242,12 @@ namespace libml {
 
                 std::vector<int> predy;
 		
-		for(int i=0;i<numberofexamples;i++)
+		for(std::size_t i=0;i<numberofexamples;i++)
 		{	
 			//hardcoded for 2 classes
 			float max=-1*std::numeric_limits<double>::infinity();
 			int py;
-			for(int j=0;j<2;j++)
+			for(std::size_t j=0;j<2;j++)
 			{
 				if(prob[j][i]>max)
 				{
@@ -269,8 +269,8 @@ namespace libml {
          */
         std::vector<int> classify(const Data_type& x)
         {
-		int numberoffeatures=x[0].size();
-		int numberofexamples=x.size();
+                std::size_t numberoffeatures=x[0].size();
+                std::size_t numberofexamples=x.size();
 		
 		
 		
@@ -279,10 +279,10 @@ namespace libml {
 		
 
 		//calculating the transpose
-		for(int i=0;i<numberoffeatures;i++)
+		for(std::size_t i=0;i<numberoffeatures;i++)
 		{
                         std::vector<int> temp;
-			for(int j=0;j<numberofexamples;j++)
+			for(std::size_t j=0;j<numberofexamples;j++)
 			{
                                 
 				temp.push_back(x[j][i]	);
@@ -297,10 +297,10 @@ namespace libml {
 
 		//As it is Bernoulli calculate (1-x) for test data
                 std::vector<std::vector<float>> oneminusx;
-		for(int i=0;i<numberofexamples;i++)
+		for(std::size_t i=0;i<numberofexamples;i++)
 		{
                         std::vector<float> temp;
-			for(int j=0;j<numberoffeatures;j++)
+			for(std::size_t j=0;j<numberoffeatures;j++)
 			{
 				temp.push_back(1-x[i][j]);
 			}
@@ -311,11 +311,11 @@ namespace libml {
 		//Calculate the first and second term of the classifier
                 std::vector<std::vector<float>> classifier_first_term;
                 std::vector<std::vector<float>> classifier_second_term;
-		for(int j=0;j<logparameter.size();j++)
+		for(std::size_t j=0;j<logparameter.size();j++)
 		{
                         std::vector<float> temp1;
                         std::vector<float> temp2;
-			for(int i=0;i<numberofexamples;i++)
+			for(std::size_t i=0;i<numberofexamples;i++)
 			{
 				
 			
@@ -333,10 +333,10 @@ namespace libml {
 
 		}
                 std::vector<std::vector<float>> prob;
-		for(int i=0;i<classifier_second_term.size();i++)
+		for(std::size_t i=0;i<classifier_second_term.size();i++)
 		{
                         std::vector<float> temp;
-			for(int j=0;j<classifier_second_term[0].size();j++)
+			for(std::size_t j=0;j<classifier_second_term[0].size();j++)
 			{
 				temp.push_back(classifier_second_term[i][j]+classifier_first_term[i][j]);
 			}
@@ -345,9 +345,9 @@ namespace libml {
 		//Adding prior
                 std::map<int,int>::iterator it;
 		it=prior.begin();
-		for(int i=0;i<logparameter.size();i++)
+		for(std::size_t i=0;i<logparameter.size();i++)
 		{
-			for(int j=0;j<logparameter[0].size();j++)
+			for(std::size_t j=0;j<logparameter[0].size();j++)
 			{
 				prob[i][j]=prob[i][j]+(prior[it->first]);
 			}
@@ -356,12 +356,12 @@ namespace libml {
 
                 std:: vector<int> predy;
 		
-		for(int i=0;i<numberofexamples;i++)
+		for(std::size_t i=0;i<numberofexamples;i++)
 		{	
 			//Assuming data is for 2 classes
 			float max=-1*std::numeric_limits<double>::infinity();
 			int py;
-			for(int j=0;j<2;j++)
+			for(std::size_t j=0;j<2;j++)
 			{
 				if(prob[j][i]>max)
 				{
