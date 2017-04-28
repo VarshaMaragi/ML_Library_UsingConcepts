@@ -8,7 +8,7 @@
 #include <libml/naive_bayes.hpp>
 #include <libml/online_perceptron.hpp>
 #include <libml/perceptron.hpp>
-
+using namespace std::chrono;
 using namespace std;
 
 int main()
@@ -32,15 +32,22 @@ int main()
         }
 	
 
+
+
 	//Create a perceptron object
-        libml::Perceptron p;
+    cout<<"------------------Perceptron--------------------"<<endl<<endl;
+    libml::Perceptron p;
 	p.d=perceptrondata;
 	
 	p.l=perceptronlabels;
 
 	//Call the train function
-        libml::train_classification(p,p.d,p.l);
+	//Measuring training time
+	auto start1 = chrono::steady_clock::now();
+    libml::train_classification(p,p.d,p.l);
+	auto ei1= chrono::steady_clock::now();
 	
+	cout<<"Training time  "<<(ei1-start1).count()<<endl;	
 
 	//Create perceptron test data
 	vector<vector<int>> perceptrontestdata;
@@ -54,10 +61,14 @@ int main()
 
 
 	//testing the perceptron.(Hardcoding the true labels for the corresponding test data to check the accuracy)
-	vector<int> trainy={-1,1,1,1}; 
+	//The user can change this to take true labels
+    auto start2 = chrono::steady_clock::now();
+	vector<int> trainy={1,-1,1,-1}; 
 	float acc=libml::accuracy(trainy,pred_labels);
-	cout<<"Accuracy of the classifier"<<acc;
-	
+	auto ei2= chrono::steady_clock::now();
+	cout<<"Testing time  "<<(ei2-start2).count()<<endl;
+	cout<<"Accuracy of the classifier "<<acc<<endl<<endl;
+	cout<<"---------------Naive Bayes--------------------"<<endl;
 
 	//Create training data for naive bayes model
 	vector<vector<int>> nbdata;
@@ -71,13 +82,16 @@ int main()
        
 
     //Call the model
-        libml::NaiveBayes nb;
+    libml::NaiveBayes nb;
 	nb.d=nbdata;
 	nb.l=nblabels;
 	
 	//train the naive bayes classifier
-        libml::train_classification(nb,nb.d,nb.l);
-	
+	auto start3 = chrono::steady_clock::now();
+    libml::train_classification(nb,nb.d,nb.l);
+	auto end3 = chrono::steady_clock::now();
+
+	cout<<"Training time  "<<(end3-start3).count()<<endl;
 	vector<vector<int>> nbtestdata;
 	
 	//test the Naive Bayes classifier
@@ -86,24 +100,30 @@ int main()
                 nbtestdata.push_back({col_1, col_2, col_3});
         }
 
+        auto start4 = chrono::steady_clock::now();
         vector<int> pred_classes = libml::predict_classification(nb,nbtestdata);
-
+        auto end4 = chrono::steady_clock::now();
+	vector<int>nbtrainy = {0,1,1,0};
 	
-	float accnb=libml::accuracy(trainy,pred_classes);
-	cout<<"Accuracy of the classifier"<<accnb;
-
+	
+	float accnb=libml::accuracy(nbtrainy,pred_classes);
+	cout<<"Accuracy of the classifier "<<accnb<<endl;
+	cout<<"Testing time  "<<(end4-start4).count()<<endl<<endl;
+	cout<<"---------------KNN--------------------"<<endl<<endl;
 	//Train and Test the knn model
         libml::KNN knn;
 	knn.d=perceptrondata;
 	knn.l=perceptronlabels;
 	 
-	knn.k=(int)8;
+	knn.k=(int)3;
 
-
-        libml::train_classification(knn,knn.d,knn.l);
+	auto start5 = chrono::steady_clock::now();
+    libml::train_classification(knn,knn.d,knn.l);
+    auto end5 = chrono::steady_clock::now();
+    cout<<"Training time  "<<(end5-start5).count()<<endl;
 	vector<vector<int>> knntestdata;
 	vector<vector<string>> parseddataknn;
-	cout<<"in here";
+	//cout<<"in here";
 
 	io::CSVReader<2> in_knntestinp("data/knntestdatainp.csv");
         while(in_knntestinp.read_row(col_1, col_2)) {
@@ -111,11 +131,16 @@ int main()
         } 
 	
 	//  //knntestdata={{8,-11},{14,-3}};
+        auto start6 = chrono::steady_clock::now();
         pred_classes = libml::predict_classification(knn,knntestdata);
+        auto end6 = chrono::steady_clock::now();
+        cout<<"Testing time  "<<(end5-start5).count()<<endl;
 	 //testing the KNN classifier
 	
-	float accknn=libml::accuracy(trainy,pred_classes);
-	cout<<"Accuracy of the classifier"<<accknn;
+	vector<int> knntrainy={-1,1,1,1};
+	float accknn=libml::accuracy(knntrainy,pred_classes);
+
+	cout<<"Accuracy of the classifier "<<accknn<<endl;
 
 
 	// Read Data
@@ -150,24 +175,24 @@ int main()
 	}
 
 	/* ###### Linear Regression ###### */
-        libml::LinearRegression lr;
-	cout << "Calling Linear Regression train" << endl;
-        libml::train_regression(lr, train_data, train_labels);
+    libml::LinearRegression lr;
+	
+    libml::train_regression(lr, train_data, train_labels);
 
-	cout << "Calling Linear Regression Predict" << endl;
-	//auto predicted_labels = libml::predict_regression(lr, test_data);
+	
+	auto predicted_labels = libml::predict_regression(lr, test_data);
 
 
 
 	//Create an online perceptron model
-        libml::OnlinePerceptron op;
+    libml::OnlinePerceptron op;
 	
 	libml::OnlinePerceptron::Label_type l;
 	ifstream file("perceptroninput.csv");
 
 	string line;
 	
-/*	while(getline(file,line))
+	while(getline(file,line))
 	{
                 libml::OnlinePerceptron::Data_type s;
 		s<<line;
@@ -175,9 +200,9 @@ int main()
                 libml::train_classification(op,s,l);
 		s.str(string());
 
-	}*/
+	}
 
-        cout<<endl<<"Testing K-Means"<<endl;
+        
 	
 	
 
