@@ -90,7 +90,14 @@ concept bool UnsupervisedClassification = requires()
 	t.classify(d);
 };
 
-
+template<typename T>
+concept bool OnlineLearningClassify = requires()
+{
+        typename T::Data_type;
+        typename T::Label_type;
+} && requires(T t,typename T::Data_type d,typename T::Label_type l) {
+        t.classify(d,l);
+};
 
 template<typename T>
 void check(T& x, typename T::Data_type& md, typename T::Label_type& ml) requires Classification<T>
