@@ -35,8 +35,11 @@ void train_unsupervised(T& lr, typename T::Data_type& train_data) requires Unsup
 	lr.classify(train_data);
 }
 
-
-
+template<typename T>
+void classify_online(T& lr, typename T::Data_type& test_data, typename T::Label_type& test_labels) requires OnlineLearningClassify<T>
+{
+        return lr.classify(test_data, test_labels);
+}
 
 } // namespace libml
 
