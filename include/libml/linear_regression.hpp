@@ -9,31 +9,6 @@
 #include <stdexcept>
 #include "helpers.hpp"
 
-// beta = np.zeros(x.shape[1])
-// p_beta = np.empty_like(beta)
-// if alpha == 0.8:
-// 	max_iter = 80
-
-// for i in range(max_iter):
-// 	beta = beta - alpha * grad(beta, x_scaled, y)
-// 	# print("beta: ", beta)
-// 	# print("pbeta: ", p_beta)
-// 	# print("pbeta - beta: ", p_beta - beta)
-
-// 	if i!=0 and not printed and abs(obj(beta, x, y) - obj(p_beta, x, y)) <= 0.0000001:
-// 		print("Converged, Iter: {0} alpha: {1}\n".format(i, alpha))
-// 		# print("p:{0} b:{1}".format(obj(beta, x, y), obj(p_beta, x, y)))
-// 		# print("Diff: ", obj(beta, x, y) - obj(p_beta, x, y))
-// 		printed = True
-// 	p_beta = beta
-
-// out.write("{0},{1},{2},{3},{4}\n".format(alpha, max_iter, beta[0], beta[1], beta[2]))
-
-// def grad(beta, x, y):
-// 	# print("Val", np.sum((x.T * (np.sum(x * beta, axis=1) - y)).T, axis=0))
-// 	d = (np.dot(x, beta) -  y).T
-// 	return np.dot(d, x).T / x.shape[0]
-
 namespace libml {
 class LinearRegression{
 public:
@@ -50,9 +25,6 @@ public:
 
         using Data_primitive = double;
         using Label_primitive = double;
-
-// def obj(beta, x, y):
-// 	return (np.power((np.dot(x, beta) - y), 2).sum() / (2*x.shape[0]))
 
 	// Operations for saving and restoring the state of the regression
 	// after initial training.
@@ -102,6 +74,7 @@ public:
 		return gradient;
 	}
 
+	// Train the linear regression model
 	void train(std::vector<std::vector<double>>& train_data, std::vector<double>& train_labels)
 	{
 		if (train_data.size() != train_labels.size())
@@ -128,7 +101,7 @@ public:
 				std::cout << std::endl;
 			}
 
-			if (iter !=1 && abs(obj(beta, train_data, train_labels) - obj(p_beta, train_data, train_labels)) <= tol)
+			if (iter !=1 && std::abs(obj(beta, train_data, train_labels) - obj(p_beta, train_data, train_labels)) <= tol)
 			{
 				if (verbose)
 				{
@@ -141,6 +114,7 @@ public:
 		}
 	}
 
+	// Regress on the model for test data
 	std::vector<double> regress(std::vector<std::vector<double>> test_data)
 	{
 		if (test_data[0].size() != this->beta.size())
@@ -169,7 +143,10 @@ public:
 		return predicted_values;
 	}
 
-	LinearRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 0)   
+
+
+	// Linear Regression constructor for initialising the model parameters
+	LinearRegression(double alpha = 0.8, double maxIter = 1000, double tol = 0.00001, bool fit_intercept = 0, bool verbose = 1)   
         : alpha(alpha), maxIter(maxIter), tol(tol), fit_intercept(fit_intercept), verbose(verbose) // member init list  
 	{
 	}

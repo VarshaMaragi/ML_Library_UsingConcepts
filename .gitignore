@@ -2,3 +2,7 @@ a.out
 lr_state.txt
 boost_1_63_0/
 *.gch
+*.o
+libml-test
+Projectmain
+outputknn.txt

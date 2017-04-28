@@ -18,10 +18,10 @@ public:
 
         using Data_type = libml::matrix2<double>;
         using Data_primitive = double;
-
-        std::vector<std::vector<double>> init_centroids(std::vector<std::vector<double>>& train_data)
+	// Initialise random centroids
+    std::vector<std::vector<double>> init_centroids(std::vector<std::vector<double>>& train_data)
 	{
-                std::vector<std::vector<double>> centroids;
+        std::vector<std::vector<double>> centroids;
 		for (int i = 0; i < k; i++)
 		{
 			auto n = rand() % train_data.size();
@@ -31,17 +31,8 @@ public:
 		return centroids;
 	}
 
-    //  # Calculate new centroids as the means of the samples
-    // # in each cluster
-    // def _calculate_centroids(self, clusters, X):
-    //     n_features = np.shape(X)[1]
-    //     centroids = np.zeros((self.k, n_features))
-    //     for i, cluster in enumerate(clusters):
-    //         centroid = np.mean(X[cluster], axis=0)
-    //         centroids[i] = centroid
-    //     return centroids
-
-        std::vector<double> cluster_mean(std::vector<std::vector<double>> cluster)
+	// Find mean of the cluster
+    std::vector<double> cluster_mean(std::vector<std::vector<double>> cluster)
     {
             std::vector<double> clmean(cluster[0].size(), 0);
 		for (int j = 0; j < cluster[0].size(); j++)
@@ -55,7 +46,8 @@ public:
 		return clmean;
     }
 
-        std::vector<std::vector<double>> calculate_centroids(auto clusters, std::vector<std::vector<double>>& train_data)
+    // Find centroids as mean
+    std::vector<std::vector<double>> calculate_centroids(auto clusters, std::vector<std::vector<double>>& train_data)
 	{	
 		int n_features = train_data[0].size();
                 std::vector<std::vector<double>> centroids(k, std::vector<double>(n_features));
@@ -67,6 +59,7 @@ public:
 		return centroids;
 	}
 	
+	// Get the closest centroid
 	int closest_centroid(auto& sample, auto& centroids)
 	{
 		double closest_distance = std::numeric_limits<double>::infinity();
@@ -82,8 +75,9 @@ public:
 		}
 		return closest_i;
 	}
-	
-        std::vector<std::vector<std::vector<double>>> create_clusters(std::vector<std::vector<double>>& centroids, std::vector<std::vector<double>>& train_data)
+
+	// Create clusters 
+    std::vector<std::vector<std::vector<double>>> create_clusters(std::vector<std::vector<double>>& centroids, std::vector<std::vector<double>>& train_data)
 	{
 		auto n_samples = train_data.size();
                 std::vector<std::vector<std::vector<double>>> clusters(3);
@@ -115,8 +109,9 @@ public:
 		}
 		return 0;
 	}
-
-        std::vector<int> cluster_labels(auto clusters,auto train_data)
+	
+	// Cluster labels
+    std::vector<int> cluster_labels(auto clusters,auto train_data)
 	{
                 std::vector<int> pred_labels;
 		for (auto ex : train_data)
@@ -136,40 +131,28 @@ public:
 		return pred_labels;
 	}
 
-        void train(Data_type& data) {
-                // FIXME
-                throw std::logic_error("Not implemented");
-        }
-
-        std::vector<int> classify(std::vector<std::vector<double>>& train_data)
+    // void train(Data_type& data) {
+    //             // FIXME
+    //             throw std::logic_error("Not implemented");
+    //     }
+	
+    std::vector<int> classify(std::vector<std::vector<double>>& train_data)
 	{
-                std::vector<std::vector<double>> centroids = init_centroids(train_data);
-                std::vector<std::vector<double>> prev_centroids;
+        std::vector<std::vector<double>> centroids = init_centroids(train_data);
+        std::vector<std::vector<double>> prev_centroids;
 		int iter = 1;
-                std::vector<std::vector<std::vector<double>>> clusters;
+        std::vector<std::vector<std::vector<double>>> clusters;
 		
 		while(iter <= maxIter)
 		{
 			clusters = create_clusters(centroids, train_data);
 			prev_centroids = centroids;
-
 			centroids = calculate_centroids(clusters, train_data);
 			if (diff(centroids, prev_centroids))
 			{
 				break;
 			}
-
-//    # Calculate new centroids as the means of the samples
-// 	# in each cluster
-// 	def _calculate_centroids(self, clusters, X):
-//     n_features = np.shape(X)[1]
-//     centroids = np.zeros((self.k, n_features))
-//     for i, cluster in enumerate(clusters):
-//         centroid = np.mean(X[cluster], axis=0)
-//         centroids[i] = centroid
-//     return centroids
 		}
-
 		return cluster_labels(clusters, train_data);
 	}
 
