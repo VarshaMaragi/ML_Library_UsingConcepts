@@ -137,7 +137,7 @@ int main()
         auto start6 = chrono::steady_clock::now();
         pred_classes = libml::predict_classification(knn,knntestdata);
         auto end6 = chrono::steady_clock::now();
-        cout<<"Testing time  "<<(end5-start5).count()<<endl;
+        cout<<"Testing time  "<<(end6-start6).count()<<endl;
 	 //testing the KNN classifier
 	
 	vector<int> knntrainy={-1,1,1,1};
