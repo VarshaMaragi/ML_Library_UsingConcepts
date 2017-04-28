@@ -197,13 +197,15 @@ int main()
 
 	string line;
 	
-	// while(getline(file,line))
-	// {
- //                libml::OnlinePerceptron::Data_type s;
-	// 	s<<line;
-	// 	//Pass the csv stream
- //                libml::train_classification(op,s,l);
-	// 	s.str(string());
+
+	while(getline(file,line))
+	{
+                libml::OnlinePerceptron::Data_type s;
+		s<<line;
+		//Pass the csv stream
+                libml::classify_online(op,s,l);
+		s.str(string());
+
 
 	// }
 
