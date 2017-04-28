@@ -9,6 +9,7 @@ namespace libml {
 template<typename T>
 using matrix2 = std::vector<std::vector<T>>;
 
+// Calculate the mean row vector
 std::vector<double> calculate_mean(matrix2<double>& train_data)
 {
 	int nSamples = train_data.size();
@@ -26,6 +27,7 @@ std::vector<double> calculate_mean(matrix2<double>& train_data)
 	return mean;
 }
 
+// Calculate the std row vector
 std::vector<double> calculate_std(matrix2<double>& train_data)
 {
 	int nSamples = train_data.size();
@@ -45,6 +47,7 @@ std::vector<double> calculate_std(matrix2<double>& train_data)
 	return std;
 }
 
+// Calculate Accuracy
 float accuracy(std::vector<int> a, std::vector<int> b)
 {
 	float sum=0;
@@ -60,6 +63,7 @@ float accuracy(std::vector<int> a, std::vector<int> b)
 	return accuracy;
 }
 
+// Euclidean distance between vectors x and y
 double euclidean_distance(std::vector<double> x, std::vector<double> y)
 {
 	double dist = 0;
@@ -68,6 +72,17 @@ double euclidean_distance(std::vector<double> x, std::vector<double> y)
 		dist += pow(x[i] - y[i], 2);
 	}
 	return sqrt(dist);
+}
+
+// L2 Norm of a vector
+double norm2(std::vector<double> x)
+{
+	double val = 0;
+	for (int i = 0; i < x.size(); i++)
+	{
+		val += pow(x[i], 2)
+	}
+	return sqrt(val);
 }
 
 } // namespace libml
