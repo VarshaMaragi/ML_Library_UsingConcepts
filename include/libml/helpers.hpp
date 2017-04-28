@@ -102,6 +102,18 @@ double norm2(const std::vector<double>& x)
 	return sqrt(val);
 }
 
+// L1 Norm of a vector
+double norm1(std::vector<double>& x)
+{
+	double val = 0;
+	for (int i = 0; i < x.size(); i++)
+	{
+		val += std::abs(x[i]);
+	}
+	return val;
+}
+
+
 } // namespace libml
 
 #endif // ifndef LIBML_HELPER_HPP
