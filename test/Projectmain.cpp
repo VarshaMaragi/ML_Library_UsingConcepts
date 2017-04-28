@@ -189,14 +189,17 @@ int main()
 	float acclr=libml::euclidean_distance(train_labels,predicted_labels);
 
 	cout<<"Euclidean distance of the predicted label and true label "<<acclr<<endl;
+
+	cout<<"-------------Online Perceptron-----------------"<<endl<<endl;
 	//Create an online perceptron model
     libml::OnlinePerceptron op;
 	
 	libml::OnlinePerceptron::Label_type l;
-	ifstream file("perceptroninput.csv");
+	ifstream file("data/perceptroninput.csv");
 
 	string line;
-	
+	cout<<"OnlinePerceptron"<<endl;
+	stringstream s;
 
 	while(getline(file,line))
 	{
@@ -207,18 +210,18 @@ int main()
 		s.str(string());
 
 
-	// }
+	 }
 
         
 	
 	
-
+	cout<<"-------------K-means-----------------"<<endl<<endl;
 	/* ###### K-Means ###### */
 	double d1, d2, d3, d4;
-	string s;
+	string s1;
 	io::CSVReader<5> km_data("data/iris.data.txt");
 	vector<vector<double>> asd;
-	while(km_data.read_row(d1, d2, d3, d4, s))
+	while(km_data.read_row(d1, d2, d3, d4, s1))
 	{
 		// cout << d1;
 		asd.push_back({d1,d2,d3,d4});
@@ -226,7 +229,11 @@ int main()
 
         libml::KMeans km;
 	//x has the predicted values
+    auto start9 = chrono::steady_clock::now();
 	libml::train_unsupervised(km, asd);
+	auto end9 = chrono::steady_clock::now();
+	cout<<"Training time  "<<(end9-start9).count()<<endl;
+	cout<<"--------------------------------"<<endl<<endl;
 	// for (auto l : x)
 	// {
 	// 	cout << l << endl;
