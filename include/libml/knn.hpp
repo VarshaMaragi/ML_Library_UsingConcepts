@@ -1,3 +1,8 @@
+/**
+ * @file knn.hpp
+ * @brief Contains the k-nearest neighbors implementation
+ */
+
 #ifndef LIBML_KNN_H
 #define LIBML_KNN_H
 
@@ -10,6 +15,13 @@
 #include "naive_bayes.hpp"
 
 namespace libml {
+        /**
+         * @brief k-nearest neighbors classification model
+         *
+         * k-nearest neighbors is a #Classification algorithm
+         * that labels a sample according to the most common
+         * label in the k-nearest neighboring samples.
+         */
         class KNN
         {
                 public:
@@ -31,6 +43,9 @@ namespace libml {
                         //DataforClassification d=new DataforClassification();
                         //LabelsforClassification l= new LabelsforClassification();
 
+                        /**
+                         * @brief Trains the k-NN model
+                         */
                         void train(Data_type& x, Label_type& y)
                         {
                                 if (x.size() != y.size())
@@ -40,6 +55,10 @@ namespace libml {
                                 
                         };
 
+                        /**
+                         * @brief Classifies a set of sample points
+                         * @return A vector of ints (labels) corresponding to each sample row
+                         */
                         std::vector<int> classify(Data_type& testdata)
                         {
                                 std::ofstream f;

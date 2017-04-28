@@ -1,3 +1,17 @@
+/**
+ * @file concepts.hpp
+ * @brief Definitions for concepts used by LibML
+ *
+ * In order to enforce the compliance of computational models
+ * and storage structures used, LibML uses concepts to check
+ * constraints at compile-time, all of which are defined here.
+ *
+ * The use of concepts is intended to show more accurate error
+ * messages should some entity fail a constraint, such as data
+ * types for most models requiring two-dimensional array
+ * semantics.
+ */
+
 #ifndef LIBML_CONCEPTS_HPP
 #define LIBML_CONCEPTS_HPP
 
@@ -7,12 +21,22 @@
 
 namespace libml {
 
+/**
+ * @brief Enforces that T is an arithmetic type (i.e. float or integer)
+ */
 template<typename T>
 concept bool Numeric = std::is_arithmetic<T>::value;
 
+/**
+ * @brief Enforces that T is an integer type, signed or unsigned
+ */
 template<typename T>
 concept bool Integral = std::is_integral<T>::value;
 
+/**
+ * @brief Enforces that T is an array storing items of type R with exactly D dimensions
+ * @bug For D > 1, the dimension constraint is not accurately enforced
+ */
 template<typename T, typename R, std::size_t D>
 concept bool NDimensional() {
 	return (D == 0 && requires(T t) {
@@ -27,6 +51,9 @@ concept bool NDimensional() {
 			} /*&& NDimensional<T, R, D - 1>()*/); // This hangs the compiler!
 }
 
+/**
+ * @brief Enforces that T can be written to an ostream using << and read from an istream using >>
+ */
 template<typename T>
 concept bool Serializable = requires(T t, std::istream& i, std::ostream& o)
 {
@@ -34,16 +61,31 @@ concept bool Serializable = requires(T t, std::istream& i, std::ostream& o)
 	{ i << t };
 };
 
+/**
+ * @brief Enforces that T is has two-dimensional array semantics and stores type R
+ */
 template<typename T, typename R>
 concept bool Data() {
 	return NDimensional<T, R, 2>();
 }
 
+/**
+ * @brief Enforces that T is has one-dimensional array semantics storing type R
+ */
 template<typename T, typename R>
 concept bool Labels() {
 	return NDimensional<T, R, 1>();
 }
 
+/**
+ * @brief Enforces that T is a regression model
+ *
+ * In order for a type to be a regression model it must have two methods, one
+ * for training and one for calculating a regression, and must have exposed
+ * associate types specifying the primitive data type being stored (i.e.
+ * floats or ints) and the types used for designating arrays of #Data
+ * and #Labels.
+ */
 template<typename T>
 concept bool Regression = requires()
 {
@@ -61,6 +103,15 @@ concept bool Regression = requires()
 	t.regress(d);
 };
 
+/**
+ * @brief Enforces that T is a classification model
+ *
+ * In order for a type to be a classification model it must have two methods,
+ * one for training and one for classifying items, and must have exposed
+ * associate types specifying the primitive data type being stored (i.e.
+ * floats or ints) and the types used for designating arrays of #Data
+ * and #Labels.
+ */
 template<typename T>
 concept bool Classification = requires()
 {
@@ -78,6 +129,12 @@ concept bool Classification = requires()
 	t.classify(d);
 };
 
+/**
+ * @brief Enforces that T is an unsupervised classification model
+ *
+ * Unlike #Classification, unsupervised classifications do not have labels,
+ * and instead perform classifications on sets of #Data.
+ */
 template<typename T>
 concept bool UnsupervisedClassification = requires()
 {
@@ -90,6 +147,16 @@ concept bool UnsupervisedClassification = requires()
 	t.classify(d);
 };
 
+/**
+ * @brief Enforces that T is an online learning classifier
+ *
+ * Unlike #Classification, online classifiers do not have primitive types
+ * and are responsible themselves for parsing the input coming over the
+ * wire. It also will not enforce array semantics on data and labels.
+ *
+ * Data_type and Label_type should be streams when working with online
+ * classification.
+ */
 template<typename T>
 concept bool OnlineLearningClassify = requires()
 {
@@ -98,20 +165,6 @@ concept bool OnlineLearningClassify = requires()
 } && requires(T t,typename T::Data_type d,typename T::Label_type l) {
         t.classify(d,l);
 };
-
-template<typename T>
-void check(T& x, typename T::Data_type& md, typename T::Label_type& ml) requires Classification<T>
-{
-	std::cout<<"Check the classifier\n";
-	train(x,md,ml);
-}
-
-template<typename T>
-void test(T& x, typename T::Data_type& td)
-{
-	std::cout<<"Test the classifier\n";
-	classify(x,td);
-}
 
 } // namespace libml
 

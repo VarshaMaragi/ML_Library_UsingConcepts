@@ -1,3 +1,8 @@
+/**
+ * @file perceptron.hpp
+ * @brief Contains the perceptron implementation
+ */
+
 #ifndef LIBML_PERCEPTRON_H
 #define LIBML_PERCEPTRON_H
 
@@ -11,6 +16,19 @@
 #include "concepts.hpp"
 
 namespace libml {
+
+        /**
+         * @brief Perceptron classification model
+         *
+         * The perceptron is a #Classification algorithm that
+         * makes predictions based on a linear predictor
+         * function.
+         *
+         * The perceptron is adapatable for online learning
+         * since it only processes elements in the training
+         * set one at a time. This functionality is available
+         * via the #OnlinePerceptron.
+         */
 class Perceptron
 {
 public:
@@ -30,7 +48,10 @@ public:
 
 	//DataforClassification d=new DataforClassification();
 	//LabelsforClassification l= new LabelsforClassification();
-	
+
+        /**
+         * @brief Trains the perceptron on a pre-created set of data
+         */
 	void train(Data_type& x, Label_type& y) {
                 std::ofstream f;
 		f.open ("trainingweights.txt");
@@ -82,6 +103,10 @@ public:
 		}
 	}
 
+        /**
+         * @brief Classifies a set of sample points
+         * @return A vector of ints (labels) corresponding to each row
+         */
         std::vector<int> classify(Data_type& x) {
                // std::cout<<"classify the data\n";
                 std::vector<int> predy;
