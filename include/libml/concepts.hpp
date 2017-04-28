@@ -87,7 +87,6 @@ concept bool UnsupervisedClassification = requires()
 	requires Data<typename T::Data_type, typename T::Data_primitive>();
 
 } && requires(T t, typename T::Data_type d) {
-	t.train(d);
 	t.classify(d);
 };
 
