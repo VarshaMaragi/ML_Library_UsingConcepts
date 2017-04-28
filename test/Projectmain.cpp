@@ -107,8 +107,9 @@ int main()
 	
 	
 	float accnb=libml::accuracy(nbtrainy,pred_classes);
+	cout<<"Testing time  "<<(end4-start4).count()<<endl;
 	cout<<"Accuracy of the classifier "<<accnb<<endl;
-	cout<<"Testing time  "<<(end4-start4).count()<<endl<<endl;
+	
 	cout<<"---------------KNN--------------------"<<endl<<endl;
 	//Train and Test the knn model
         libml::KNN knn;
@@ -174,16 +175,20 @@ int main()
 		}
 	}
 
-	/* ###### Linear Regression ###### */
+	cout<<"-------------Linear Regression-----------------"<<endl<<endl;
     libml::LinearRegression lr;
-	
+	auto start7 = chrono::steady_clock::now();
     libml::train_regression(lr, train_data, train_labels);
-
-	
+    auto end7 = chrono::steady_clock::now();
+    cout<<"Training time  "<<(end7-start7).count()<<endl;
+	auto start8 = chrono::steady_clock::now();
 	auto predicted_labels = libml::predict_regression(lr, test_data);
+	auto end8 = chrono::steady_clock::now();
+	cout<<"Testing time  "<<(end8-start8).count()<<endl;
 
+	float acclr=libml::euclidean_distance(train_labels,predicted_labels);
 
-
+	cout<<"Euclidean distance of the predicted label and true label "<<acclr<<endl;
 	//Create an online perceptron model
     libml::OnlinePerceptron op;
 	
@@ -192,15 +197,15 @@ int main()
 
 	string line;
 	
-	while(getline(file,line))
-	{
-                libml::OnlinePerceptron::Data_type s;
-		s<<line;
-		//Pass the csv stream
-                libml::train_classification(op,s,l);
-		s.str(string());
+	// while(getline(file,line))
+	// {
+ //                libml::OnlinePerceptron::Data_type s;
+	// 	s<<line;
+	// 	//Pass the csv stream
+ //                libml::train_classification(op,s,l);
+	// 	s.str(string());
 
-	}
+	// }
 
         
 	

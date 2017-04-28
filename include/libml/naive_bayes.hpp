@@ -270,7 +270,7 @@ namespace libml {
 				temp.push_back(x[j][i]	);
 			}
 			transpose_x.push_back(temp);
-			std::cout<<std::endl;
+			//std::cout<<std::endl;
 		}
 
 

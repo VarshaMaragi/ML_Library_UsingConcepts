@@ -45,7 +45,7 @@ std::vector<double> calculate_std(matrix2<double>& train_data)
 	return std;
 }
 
-float accuracy(std::vector<int> a, std::vector<int> b)
+float accuracy(std::vector<auto> a, std::vector<auto> b)
 {
 	float sum=0;
         float accuracy;
