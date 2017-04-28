@@ -9,6 +9,7 @@
 #include <libml/online_perceptron.hpp>
 #include <libml/perceptron.hpp>
 #include <libml/ridge_regression.hpp>
+#include <libml/lasso_regression.hpp>
 using namespace std::chrono;
 using namespace std;
 
@@ -204,8 +205,22 @@ int main()
 
 	acclr=libml::euclidean_distance(train_labels,predicted_labels);
 
-	cout<<"Euclidean distance of the predicted label and true label "<<acclr<<endl;
+	cout<<"Euclidean distance of the predicted label and true label(Ridge)"<<acclr<<endl;
+	
+	cout<<"-------------Lasso Regression-----------------"<<endl<<endl;
+    libml::LassoRegression lar;
+	start7 = chrono::steady_clock::now();
+    libml::train_regression(lar, train_data, train_labels);
+	end7 = chrono::steady_clock::now();
+    cout<<"Training time  "<<(end7-start7).count()<<endl;
+	start8 = chrono::steady_clock::now();
+	predicted_labels = libml::predict_regression(lar, test_data);
+	end8 = chrono::steady_clock::now();
+	cout<<"Testing time  "<<(end8-start8).count()<<endl;
 
+	acclr=libml::euclidean_distance(train_labels,predicted_labels);
+
+	cout<<"Euclidean distance of the predicted label and true label(Lasso)"<<acclr<<endl;
 
 	cout<<"-------------Online Perceptron-----------------"<<endl<<endl;
 	//Create an online perceptron model
