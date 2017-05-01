@@ -54,7 +54,7 @@ public:
          */
 	void train(Data_type& x, const Label_type& y) {
                 std::ofstream f;
-		f.open ("trainingweights.txt");
+		f.open ("trainingweightsperceptron.txt");
 		int numberoffeatures=x[0].size()+1;
 		int numberofexamples=x.size();
 
@@ -120,16 +120,20 @@ public:
 			predy.push_back(inner_product(begin(x[i]), end(x[i]), begin(weights), 0.0));
 			
 		}
+
+		std::ofstream f;
+		f.open ("perceptronoutput.txt");
 		for(int i=0;i<x.size();i++)
 		{
 			if(predy[i]<0)
 			{
 			
 			predy[i]=-1;
+			f<<"-1"<<"\n";
 			}
 			else
 			{
-				
+				f<<"1"<<"\n";
 				predy[i]=1;
 			}
 

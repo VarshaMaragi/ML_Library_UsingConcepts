@@ -355,7 +355,8 @@ namespace libml {
 		}
 
                 std:: vector<int> predy;
-		
+		std::ofstream f;
+		f.open ("naivebayesoutput.txt");
 		for(int i=0;i<numberofexamples;i++)
 		{	
 			//Assuming data is for 2 classes
@@ -370,6 +371,7 @@ namespace libml {
 				}
 
 			}
+			f<<py<<"\n";
 			predy.push_back(py);
 			//Print predicted y values
             //std::cout<<py<<std::endl;

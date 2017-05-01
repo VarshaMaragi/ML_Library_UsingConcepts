@@ -127,10 +127,12 @@ namespace libml {
 
                                 //Print the predicted y values
                                 // std::cout<<"KNN predicted values"<<std::endl;
-                                // for(int j=0;j<predy.size();j++)
-                                // {
+                                for(int j=0;j<predy.size();j++)
+                                 {
+
+                                    f<<predy[j]<<"\n";
                                 //         std::cout<<predy[j];
-                                // }
+                                 }
 
                                 return predy;
                         };
