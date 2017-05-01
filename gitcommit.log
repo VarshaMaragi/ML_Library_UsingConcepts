@@ -1,0 +1,616 @@
+*   commit e023f67aa7296b8e94e3d80239f77777b5959e1a (HEAD -> master, origin/master, origin/HEAD)
+|\  Merge: 3ec18c5 bd49e46
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Mon May 1 15:32:36 2017 -0400
+| | 
+| |     Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| | 
+* | commit 3ec18c52c8c3e3fdc3a6242681daf75747cbfe42
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Mon May 1 15:32:21 2017 -0400
+| | 
+| |     modified to output the predicted values into a file
+| |   
+| | * commit 3eaf0d21497ad51a46490b284d7ea770caffbb16 (origin/optimizations)
+| | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | Date:   Fri Apr 28 00:35:40 2017 -0400
+| | | 
+| | |     Fix Wreorder and other warnings
+| | | 
+| | * commit 2e6bec0ea6bcaac2eaf02bdcf49aa3767ed5ed52
+| | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | Date:   Fri Apr 28 00:23:19 2017 -0400
+| | | 
+| | |     Fix mismatched output in test timings
+| | |   
+| | *   commit 31b28bd546dc626b4119137cf4c7bd82a66e8b8b
+| | |\  Merge: 38f3298 bd49e46
+| | |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| |/|   Date:   Fri Apr 28 00:22:18 2017 -0400
+| | |   
+| | |       Merge branch 'master' of github.com:VarshaMaragi/ML_Library_UsingConcepts into optimizations
+| | | 
+| * | commit bd49e46d72af99a1fab34af8dc4919ddb956b1e6
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Fri Apr 28 00:09:23 2017 -0400
+| | | 
+| | |     Lasso upd
+| | | 
+| * | commit cfb2602f521da1f2410a6cf98115a7a49f400066
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Fri Apr 28 00:04:34 2017 -0400
+| | | 
+| | |     rr
+| | |   
+| * |   commit 936024deb8503989b4c3a5901cd0ee0156d6c05d
+| |\ \  Merge: 1945845 5260682
+| |/ /  Author: thejaswi01 <thejaswi01@gmail.com>
+|/| |   Date:   Fri Apr 28 00:00:31 2017 -0400
+| | |   
+| | |       rr
+| | | 
+| * | commit 19458455b3e0ec91f8bb82ce0fefbe6e2fdc8a9c
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Thu Apr 27 23:59:56 2017 -0400
+| | | 
+| | |     RR upd
+| | | 
+| | * commit 38f329806096c0c0266e3633f5659043f7e0f96f
+| |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+|/|   Date:   Fri Apr 28 00:22:04 2017 -0400
+| |   
+| |       Fix signed/unsigned comparison warnings
+| | 
+* | commit 52606822844d34ea4feabd3b3ee338419f033e2d
+| | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | Date:   Thu Apr 27 23:56:07 2017 -0400
+| | 
+| |     Update test makefile
+| |   
+* |   commit 3fd84ef6be08cbe2d516f6ebe5ed9b87e10a3659
+|\ \  Merge: 9286cf8 a6a8574
+| |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| |   Date:   Thu Apr 27 23:55:36 2017 -0400
+| |   
+| |       Merge branch 'master' of github.com:VarshaMaragi/ML_Library_UsingConcepts
+| |   
+| *   commit a6a857488f16c8b3d4563715cd47cc4d419ef1bd
+| |\  Merge: e09c177 d1ecea6
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Thu Apr 27 23:54:59 2017 -0400
+| | | 
+| | |     Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| | | 
+| * | commit e09c1772c9be81d5baf23e0dbc07013dcb12b6ac
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Thu Apr 27 23:54:50 2017 -0400
+| | | 
+| | |     Lasso
+| | |   
+* | |   commit 9286cf875a1d114d39d78434551a499151f0f9bb
+|\ \ \  Merge: bef8983 d1ecea6
+| | |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| |/|   Date:   Thu Apr 27 23:53:41 2017 -0400
+| | |   
+| | |       Merge branch 'master' of github.com:VarshaMaragi/ML_Library_UsingConcepts
+| | |   
+| * |   commit d1ecea6dfbe8a79dfa189721cfca91f2e9019e82
+| |\ \  Merge: a81e8f0 a018a89
+| | |/  Author: VarshaMaragi <varshamaragi@gmail.com>
+| | |   Date:   Thu Apr 27 23:53:13 2017 -0400
+| | |   
+| | |       Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| | | 
+| * | commit a81e8f0f38f0acf3420db839054e2ee8d7559b2e
+| | | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | | Date:   Thu Apr 27 23:52:54 2017 -0400
+| | | 
+| | |     Error with norm2 rectified
+| | |   
+* | |   commit bef89833ec1c6bac72784ea6c5f516d09f9705b3
+|\ \ \  Merge: 2ed1b56 a018a89
+| | |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| |/|   Date:   Thu Apr 27 23:50:06 2017 -0400
+| | |   
+| | |       Merge branch 'master' of github.com:VarshaMaragi/ML_Library_UsingConcepts
+| | | 
+| * | commit a018a89c8b884a95f5038fec3ebaa42f60adb8e5
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Thu Apr 27 23:46:08 2017 -0400
+| | | 
+| | |     L1 Norm
+| | | 
+| * | commit 1b9959eb3f669705af879f63c11d5ff1ebb826fc
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Thu Apr 27 23:40:48 2017 -0400
+| | | 
+| | |     Lasso Regression
+| | | 
+| * | commit 9a25cbc93e66a771b603ee9f42ce89103e9ed4be
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Thu Apr 27 23:37:19 2017 -0400
+| | | 
+| | |     Ridge Test case
+| | |   
+| * |   commit c71b9f61755c0984e84b289bbf7c3fab1ff82ab3
+| |\ \  Merge: 38db94a f87b222
+| | | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | | Date:   Thu Apr 27 23:34:50 2017 -0400
+| | | | 
+| | | |     Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| | | | 
+| | * | commit f87b2228f2e1eb92cb6cc6651115b2972d7db093
+| | | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | | Date:   Thu Apr 27 23:32:34 2017 -0400
+| | | | 
+| | | |     Improve memory usage and speed by passing all vectors by reference
+| | | | 
+| * | | commit 38db94af107391299a40ae9cafb49107fc4eba97
+| | |/  Author: thejaswi01 <thejaswi01@gmail.com>
+| |/|   Date:   Thu Apr 27 23:34:45 2017 -0400
+| | |   
+| | |       LR changes
+| | | 
+* | | commit 2ed1b566819a57db35e944617857b60709150f87
+| |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+|/|   Date:   Thu Apr 27 23:32:34 2017 -0400
+| |   
+| |       Improve memory usage and speed by passing all vectors by reference
+| |   
+* |   commit 89b27b8f8e420b180979cf6e5e6654d6d9a4ae52
+|\ \  Merge: 3f22ea8 df4376d
+| |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| |   Date:   Thu Apr 27 23:28:28 2017 -0400
+| |   
+| |       Merge branch 'master' of github.com:VarshaMaragi/ML_Library_UsingConcepts
+| |   
+| *   commit df4376de44a23a216965efb4b30738761581bfd4
+| |\  Merge: 03e260f a3637a9
+| | | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | | Date:   Thu Apr 27 22:48:19 2017 -0400
+| | | 
+| | |     Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| | |   
+| | *   commit a3637a9476082fb8e5fc2330e1e62b9efed2c9dd
+| | |\  Merge: 04fa453 d9cd1d8
+| | | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | | Date:   Thu Apr 27 22:42:00 2017 -0400
+| | | | 
+| | | |     Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| | | | 
+| | * | commit 04fa45366db3dcd665caaf9da008fd86664cb4fc
+| | | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | | Date:   Thu Apr 27 22:39:00 2017 -0400
+| | | | 
+| | | |     Ridge Regression
+| | | | 
+| * | | commit 03e260ff44ebd0d5b763785431f12134bf1531f4
+| | |/  Author: VarshaMaragi <varshamaragi@gmail.com>
+| |/|   Date:   Thu Apr 27 22:47:23 2017 -0400
+| | |   
+| | |       Fixed the OnlinePerceptron
+| | | 
+* | | commit 3f22ea8a06c8e58418ef8ee79df6ed0088f07ae4
+| | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | Date:   Thu Apr 27 23:27:34 2017 -0400
+| | | 
+| | |     Mark up inline documentation in Doxygen
+| | | 
+* | | commit eabe993414a4d64dc1e7d06e31d9fa7eec632b31
+|/ /  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| |   Date:   Thu Apr 27 23:25:51 2017 -0400
+| |   
+| |       Remove unused util file
+| |   
+* |   commit d9cd1d8be05884466ac8acf054522b1fe93deeb9
+|\ \  Merge: cc859a9 cf6b2d3
+| | | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | | Date:   Thu Apr 27 22:12:23 2017 -0400
+| | | 
+| | |     testcases added
+| | | 
+| * | commit cf6b2d3790be3a98064059fce495623e3ae23de6
+| | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | Date:   Thu Apr 27 21:58:09 2017 -0400
+| | | 
+| | |     Fix online perceptron
+| | | 
+| * | commit 3ffc6f02e4324e3792e1437e3df812bbb51d8a37
+| |/  Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| |   Date:   Thu Apr 27 21:55:34 2017 -0400
+| |   
+| |       Prepare for Doxygen
+| | 
+* | commit cc859a9f7b543b88f3ac98feb6a39bb6d03a75cf
+|/  Author: VarshaMaragi <varshamaragi@gmail.com>
+|   Date:   Thu Apr 27 22:09:46 2017 -0400
+|   
+|       Added the testcases
+|   
+*   commit 5c6c58a8aacc2b7ad474ec124eb01a3a0ba99df8
+|\  Merge: 21b6936 bd0f7e4
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Thu Apr 27 21:42:44 2017 -0400
+| | 
+| |     Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| |   
+| *   commit bd0f7e4fa3e1e5a49cd909314848a18ecbd50c20
+| |\  Merge: e0eb252 2493981
+| | | Author: thejaswi01 <thejaswi01@gmail.com>
+| | | Date:   Thu Apr 27 21:36:19 2017 -0400
+| | | 
+| | |     Merge branch 'master' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts
+| | |   
+| | *   commit 2493981a2613add7369d02e5eb77d9e49ebcb58f
+| | |\  Merge: 259334e 81aaa22
+| | | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | | Date:   Thu Apr 27 21:29:28 2017 -0400
+| | | | 
+| | | |     Merge branch 'master' of github.com:VarshaMaragi/ML_Library_UsingConcepts
+| | | | 
+| | * | commit 259334ea27da9ce0a5903a3e44d8263f5b816bef
+| | | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | | Date:   Thu Apr 27 21:29:14 2017 -0400
+| | | | 
+| | | |     Add Makefile for test program
+| | | | 
+| | * | commit 1cdd4fe58cc5b9c8f94c817383ea20b765c7637e
+| | | | Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| | | | Date:   Thu Apr 27 21:21:06 2017 -0400
+| | | | 
+| | | |     Add OnlineLearningClassify concept
+| | | | 
+| * | | commit e0eb252441c85bae5a677904baab0a6376f303bb
+| | |/  Author: thejaswi01 <thejaswi01@gmail.com>
+| |/|   Date:   Thu Apr 27 21:36:08 2017 -0400
+| | |   
+| | |       Kmeans comments and concepts should only have classify
+| | | 
+| * | commit 81aaa22e152067f1d1efce0214571d00e4bbf4d3
+| |/  Author: thejaswi01 <thejaswi01@gmail.com>
+| |   Date:   Thu Apr 27 20:51:54 2017 -0400
+| |   
+| |       LR abs error and comments
+| | 
+* | commit 21b6936221259e9687c29f205a43e712281a9998
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Thu Apr 27 21:38:17 2017 -0400
+| | 
+| |     REmoved online perceptron
+| | 
+* | commit 80cd5e1485f2f4345f07a99b64e12f89dbd75dbf
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Thu Apr 27 21:37:30 2017 -0400
+| | 
+| |     removed print statemetns in algorithms
+| | 
+* | commit cf0bee17a09aa499d0ead7adf3d54061d1868b61
+|/  Author: VarshaMaragi <varshamaragi@gmail.com>
+|   Date:   Thu Apr 27 21:35:57 2017 -0400
+|   
+|       Changed Projectmain and others and removed unwanted print sstatements
+| 
+* commit c60da897aa91797cbdcabb51f3081ecbc6fefc5c
+| Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| Date:   Thu Apr 27 20:39:30 2017 -0400
+| 
+|     Fix output for Projectmain
+| 
+* commit 0feedbfe59b82d847a0b73da51790b48bffa694a
+| Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| Date:   Thu Apr 27 20:32:56 2017 -0400
+| 
+|     Fix runtime issues
+| 
+* commit f797560e8db1657e78b9fbfccd503dfbb712e8c1
+| Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| Date:   Thu Apr 27 19:56:28 2017 -0400
+| 
+|     Get compiling with concepts and cleaner structure
+| 
+* commit d72b9a685bfc88a8de060b261125548157dc56d6
+| Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| Date:   Thu Apr 27 18:22:28 2017 -0400
+| 
+|     Move test data files to their own subdir
+| 
+* commit 96e1ea93f452dc20318f06a64090210b6a290ae4
+| Author: Nelson Gomez <nelson.gomez@columbia.edu>
+| Date:   Thu Apr 27 18:18:16 2017 -0400
+| 
+|     Attempt to bring in unsynchronized code
+| 
+* commit abd03775904f92e2ff171bfe5afb531edffe97a7
+| Author: Nelson Gomez <ng2573@columbia.edu>
+| Date:   Thu Apr 27 08:33:54 2017 -0700
+| 
+|     Add note about NDimensional concept
+| 
+* commit 46e747480270c77c770958b26c3edbfd22954732
+| Author: Nelson Gomez <ng2573@columbia.edu>
+| Date:   Thu Apr 27 07:50:10 2017 -0700
+| 
+|     Fix use of concepts
+| 
+* commit 181635ee1d9ce5b46ad4f62a1fd5dcfe4ceac73d
+| Author: Nelson Gomez <ng2573@columbia.edu>
+| Date:   Thu Apr 27 06:01:18 2017 -0700
+| 
+|     Restructure contents for packaging
+| 
+* commit 701247ffe46d66943dad609516ebb815a85d1d54
+| Author: Nelson Gomez <ng2573@columbia.edu>
+| Date:   Thu Apr 27 05:37:30 2017 -0700
+| 
+|     Add concepts and prepare for packaging
+| 
+* commit 0f657df9402a08399652097f2b5b69d8c44f4567
+| Author: Nelson Gomez <ng2573@columbia.edu>
+| Date:   Thu Apr 27 04:29:43 2017 -0700
+| 
+|     Remove dependencies on boost
+| 
+* commit ea09739dcb8d3f780411c7c6765dd839e2b328aa
+| Author: Nelson Gomez <ng2573@columbia.edu>
+| Date:   Thu Apr 27 01:58:18 2017 -0700
+| 
+|     Add include guards to all headers
+| 
+* commit 9a94964fd784ebf0cba355906e88a1f04fa47f29
+| Author: Nelson Gomez <ng2573@columbia.edu>
+| Date:   Thu Apr 27 01:46:28 2017 -0700
+| 
+|     Fix compilation issues in test cases
+|   
+*   commit 4e5595ec17c8c7096f85ad8c0eb8473e46fdec64
+|\  Merge: efc2990 278fd55
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Thu Apr 27 01:18:09 2017 -0700
+| | 
+| |     Merge branch 'master' of github.com:VarshaMaragi/ML_Library_UsingConcepts
+| | 
+| * commit 278fd55fa2dbe52ab9d1b08ebc34c3919ed81fab
+| | Author: thejaswi01 <thejaswi01@gmail.com>
+| | Date:   Wed Apr 26 20:25:57 2017 -0400
+| | 
+| |     LR Code
+| | 
+| * commit a766d23657cd87ab6d102707450d0e5d497cc96c
+| | Author: thejaswi01 <thejaswi01@gmail.com>
+| | Date:   Wed Apr 26 20:24:50 2017 -0400
+| | 
+| |     Remove old files
+| | 
+* | commit efc2990e300bb9b745334a9f4d5a8011d5c82305
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Thu Apr 27 00:19:12 2017 -0700
+| | 
+| |     Move nodataconcept to root
+| |   
+* |   commit 168adddadaa50f7f59b4ab47a4faa6b832e8745b
+|\ \  Merge: ee02c8c f87db1a
+| | | Author: Nelson Gomez <ng2573@columbia.edu>
+| | | Date:   Thu Apr 27 00:08:09 2017 -0700
+| | | 
+| | |     Merge remote-tracking branch 'origin/OnlinePerceptron'
+| | | 
+| * | commit f87db1a4c06a4c8b09654df0d64e59acb7050387 (origin/OnlinePerceptron)
+| | | Author: Varsha G Maragi <varshamaragi@gmail.com>
+| | | Date:   Wed Apr 26 18:25:35 2017 -0400
+| | | 
+| | |     Create Readme
+| | | 
+| * | commit b5fd1ead51fbd378b829dd69354a16ef6093e3bb
+| |/  Author: VarshaMaragi <varshamaragi@gmail.com>
+| |   Date:   Wed Apr 26 18:21:25 2017 -0400
+| |   
+| |       Online Perceptron code for concept OnlineLearningModel
+| |   
+* |   commit ee02c8ce8f7a5d478e3a7798a1be304adca96116
+|\ \  Merge: af806da 09dcef6
+| |/  Author: Nelson Gomez <ng2573@columbia.edu>
+|/|   Date:   Thu Apr 27 00:07:48 2017 -0700
+| |   
+| |       Merge branch 'DataConceptRemoved'
+| | 
+| * commit 09dcef60a5d39a1948fe45935484718e38daedd5 (origin/LinearRegression, origin/DataConceptRemoved)
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Wed Apr 26 09:22:09 2017 -0700
+| | 
+| |     Update gitignore
+| | 
+| * commit 69494b46b620c75fcd361df107c4d024f6291c86
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Wed Apr 26 09:21:09 2017 -0700
+| | 
+| |     Add library contents to a proper 'libml' namespace
+| |     
+| |     Also deactivates some code that did not compile and removes
+| |     test files that should not be present.
+| | 
+| * commit 785fa654bac903b4aca46ee725bd291feb57bdb5
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Tue Apr 25 04:28:23 2017 -0700
+| | 
+| |     Update README for compiling linreg
+| | 
+| * commit d9b56d404bbc558e6aa57dfaaf842cb8c8d39d40
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Tue Apr 25 04:26:59 2017 -0700
+| | 
+| |     Implement serialization on LinearRegression
+| | 
+| * commit 52ddee872030bc9fdf2a71ed7962032dd699867d
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Tue Apr 25 03:30:15 2017 -0700
+| | 
+| |     Restructure models to be classes with member functions
+| | 
+| * commit e9a07ad5b8bbb87c6b4b37452c45a30891cfb8c4
+| | Author: Nelson Gomez <ng2573@columbia.edu>
+| | Date:   Tue Apr 25 01:53:01 2017 -0700
+| | 
+| |     Add Serializable concept, derive Regression from it
+| | 
+| * commit 3da0e208f1ea3aa0667222569a37077d031f05e6
+| | Author: Thejaswi Muniyappa <thejaswi@dyn-160-39-132-157.dyn.columbia.edu>
+| | Date:   Mon Apr 24 18:41:04 2017 -0400
+| | 
+| |     Rename
+| | 
+| * commit 17843f37f645fb3c1b44af96148011bac9c5872a
+| | Author: Thejaswi Muniyappa <thejaswi@dyn-160-39-132-157.dyn.columbia.edu>
+| | Date:   Mon Apr 24 18:32:01 2017 -0400
+| | 
+| |     Add LR n CSV to readme
+| | 
+| * commit e403bb92a097da2deb24e67a77223a1b4723be9b
+| | Author: Thejaswi Muniyappa <thejaswi@dyn-160-39-132-157.dyn.columbia.edu>
+| | Date:   Mon Apr 24 18:27:32 2017 -0400
+| | 
+| |     Linear Regression
+| |   
+| *   commit 21bf602288f6c4778220d25aaf3ae2d7177332f7
+| |\  Merge: 0895ff1 4ffdabb
+| | | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | | Date:   Mon Apr 17 22:57:57 2017 -0400
+| | | 
+| | |     Merge branch 'DataConceptRemoved' of https://github.com/VarshaMaragi/ML_Library_UsingConcepts into DataConceptRemoved
+| | | 
+| | * commit 4ffdabb8062f4cf7783f0900387248135e0be952
+| | | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | | Date:   Sat Apr 8 21:35:35 2017 -0400
+| | | 
+| | |     Update ReadMe.md
+| | | 
+| | * commit 0fd90a367170824b2f8e60a62bf14611d2d36446
+| | | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | | Date:   Sat Apr 8 21:35:18 2017 -0400
+| | | 
+| | |     Create ReadMe.md
+| | | 
+| * | commit 0895ff1374f4166b1ddf870fc7a0d1194b0c2ab1
+| |/  Author: VarshaMaragi <varshamaragi@gmail.com>
+| |   Date:   Mon Apr 17 22:56:41 2017 -0400
+| |   
+| |       Added Knn to branch
+| | 
+| * commit aecf9a9aaf5cb59c46b40bad32bec41e6c7f4465
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Sat Apr 8 21:33:31 2017 -0400
+| | 
+| |     Extract this
+| | 
+| * commit 649e68e359e09a72ba75c354cd0d2c80ee0112e5
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Sat Apr 8 21:29:13 2017 -0400
+| | 
+| |     Parsing the CSV file
+| | 
+| * commit 42314c0a30ea3fbd03f640d2e995531b8b028518
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Sat Apr 8 21:27:43 2017 -0400
+| | 
+| |     Added csv parsing using Boost library
+| | 
+| * commit daf0abd911e2de6987839c42138386657161e978
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 23:57:39 2017 -0400
+| | 
+| |     Delete a.out
+| | 
+| * commit fb6b94281ddca705da51cdfb2325d1b25788eddf
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 23:57:23 2017 -0400
+| | 
+| |     Update Projectmain.cpp
+| | 
+| * commit a0c2233558da60629ed1e8f9160865145c2408bb
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 23:56:21 2017 -0400
+| | 
+| |     Update Perceptron.h
+| | 
+| * commit 2f60aa11d5883089e4f3b2c7bcaf9792074b58c1
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 17:40:24 2017 -0400
+| | 
+| |     Delete Projectmain.cpp
+| | 
+| * commit 958c1cdf48eb7d157d6a84941e9a966ce5e6bdb7
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 17:40:16 2017 -0400
+| | 
+| |     Delete Perceptron.h
+| | 
+| * commit 71a7cce392a6b704006135f2d90e795f12462625
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 17:40:04 2017 -0400
+| | 
+| |     Delete LabelsforClassification.h
+| | 
+| * commit 181d77a4427fe6a189b1fb42cc2efdbd63aa0daf
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 17:39:56 2017 -0400
+| | 
+| |     Delete DataforClassification.h
+| | 
+| * commit 338467a0472c0d6f2cdff2fae6d09a2fbce69b1a
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 17:39:46 2017 -0400
+| | 
+| |     Delete ConceptDef.h
+| | 
+| * commit a56c92fbd3406b206e219768045c725e8eb3bb7e
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Wed Apr 5 17:36:17 2017 -0400
+| | 
+| |     I have removed the data and labels concept
+| | 
+* | commit af806dae2f3cdc17f72b0cf36b40984f59f39967
+| | Author: VarshaMaragi <varshamaragi@gmail.com>
+| | Date:   Tue Apr 4 22:48:47 2017 -0400
+| | 
+| |     Delete LabelsforClassification.h
+| | 
+* | commit 73e1490e11f5ab6aa4761fc336e9fb166153ae8f
+|/  Author: VarshaMaragi <varshamaragi@gmail.com>
+|   Date:   Tue Apr 4 22:48:38 2017 -0400
+|   
+|       Delete DataforClassification.h
+| 
+* commit 2650937f299819463476171267894354aec735a2
+| Author: VarshaMaragi <varshamaragi@gmail.com>
+| Date:   Tue Apr 4 22:41:55 2017 -0400
+| 
+|     Changed data1 to data_tyoe
+| 
+* commit d7977fc01cb2044524ad95d4db32a942bc413158
+| Author: VarshaMaragi <varshamaragi@gmail.com>
+| Date:   Tue Apr 4 22:31:04 2017 -0400
+| 
+|     Removed struct within struct for data and label
+| 
+* commit c8db1b9e80dcd94c42aa6497f31235a16a06d0c5
+| Author: VarshaMaragi <varshamaragi@gmail.com>
+| Date:   Tue Apr 4 15:48:19 2017 -0400
+| 
+|     Added dummy training dataset to verify
+| 
+* commit 053b621d0918fe8c22d348f1ff0c68ccd73e3ad5
+| Author: VarshaMaragi <varshamaragi@gmail.com>
+| Date:   Mon Apr 3 21:11:39 2017 -0400
+| 
+|     Fixed the bug with multiple concepts
+| 
+* commit 745a8d66a20f70d9a8b4e1488782afeee90fc1b1
+| Author: VarshaMaragi <varshamaragi@gmail.com>
+| Date:   Mon Apr 3 18:00:35 2017 -0400
+| 
+|     Tried the first version.There is a bug when I use multiple concepts.Working on it
+| 
+* commit 61e6faa54b5025da9d82c88dd72ec621ac54fb46
+  Author: VarshaMaragi <varshamaragi@gmail.com>
+  Date:   Mon Apr 3 14:40:34 2017 -0400
+  
+      Create README.md
