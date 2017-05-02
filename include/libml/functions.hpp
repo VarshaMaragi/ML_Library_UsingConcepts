@@ -57,9 +57,9 @@ typename T::Label_type predict_classification(T& lr, typename T::Data_type& test
  * @brief Trains an #UnsupervisedClassification model
  */
 template<typename T>
-void train_unsupervised(T& lr, typename T::Data_type& train_data) requires UnsupervisedClassification<T>
+std::vector<int> train_unsupervised(T& lr, typename T::Data_type& train_data) requires UnsupervisedClassification<T>
 {
-	lr.classify(train_data);
+	return lr.classify(train_data);
 }
 
 /**
