@@ -86,7 +86,7 @@ double euclidean_distance(const std::vector<double>& x, const std::vector<double
 	double dist = 0;
 	for(int i = 0; i < x.size(); i++)
 	{
-		dist += pow(x[i] - y[i], 2);
+		dist += pow(std::abs(x[i]) - std::abs(y[i]), 2);
 	}
 	return sqrt(dist);
 }
