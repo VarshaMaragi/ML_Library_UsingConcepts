@@ -44,7 +44,6 @@ public:
 		for (int i = 0; i < k; i++)
 		{
 			auto n = rand() % train_data.size();
-			// cout << n << endl;
 			centroids.push_back(train_data[n]);
 		}
 		return centroids;
@@ -55,12 +54,12 @@ public:
          */
     std::vector<double> cluster_mean(const std::vector<std::vector<double>>& cluster)
     {
-            std::vector<double> clmean(cluster[0].size(), 0);
+        std::vector<double> clmean(cluster[0].size(), 0);
 		for (int j = 0; j < cluster[0].size(); j++)
 		{
 			for (int i = 0; i < cluster.size(); i++)
 			{
-				clmean[j] += cluster[j][i];
+				clmean[j] += cluster[i][j];
 			}
 			clmean[j] /= cluster.size();
 		}
@@ -126,22 +125,7 @@ public:
      */
 	bool diff(const auto& centroids, const auto& prev_centroids)
 	{
-		for (auto c1: centroids)
-		{
-			int flag = 0;
-			for (auto c2 : prev_centroids)
-			{
-				if (c1 == c2)
-				{
-					flag = 1;
-				}
-			}
-			if (flag == 0)
-			{
-				return 1;
-			}
-		}
-		return 0;
+		return std::is_permutation(centroids.begin(), centroids.end(), prev_centroids.begin());
 	}
 	
 	/**
@@ -150,7 +134,7 @@ public:
          */
     std::vector<int> cluster_labels(const auto& clusters, const auto& train_data)
 	{
-                std::vector<int> pred_labels;
+        std::vector<int> pred_labels;
 		for (auto ex : train_data)
 		{
 			for (int i = 0; i < clusters.size(); i++)
