@@ -39,14 +39,14 @@ int main()
 	//Create a perceptron object
     cout<<"------------------Perceptron--------------------"<<endl<<endl;
     libml::Perceptron p;
-	p.d=perceptrondata;
+	//p.d=perceptrondata;
 	
-	p.l=perceptronlabels;
+	//p.l=perceptronlabels;
 
 	//Call the train function
 	//Measuring training time
 	auto start1 = chrono::steady_clock::now();
-    libml::train_classification(p,p.d,p.l);
+    libml::train_classification(p,perceptrondata,perceptronlabels);
 	auto ei1= chrono::steady_clock::now();
 	
 	cout<<"Training time  "<<(ei1-start1).count()<<endl;	
@@ -85,12 +85,11 @@ int main()
 
     //Call the model
     libml::NaiveBayes nb;
-	nb.d=nbdata;
-	nb.l=nblabels;
+	
 	
 	//train the naive bayes classifier
 	auto start3 = chrono::steady_clock::now();
-    libml::train_classification(nb,nb.d,nb.l);
+    libml::train_classification(nb,nbdata,nblabels);
 	auto end3 = chrono::steady_clock::now();
 
 	cout<<"Training time  "<<(end3-start3).count()<<endl;
@@ -115,13 +114,15 @@ int main()
 	cout<<"---------------KNN--------------------"<<endl<<endl;
 	//Train and Test the knn model
         libml::KNN knn;
-	knn.d=perceptrondata;
-	knn.l=perceptronlabels;
+
+    //using the same data as perceptron for knn also
+	//knn.d=perceptrondata;
+	//knn.l=perceptronlabels;
 	 
 	knn.k=(int)3;
 
 	auto start5 = chrono::steady_clock::now();
-    libml::train_classification(knn,knn.d,knn.l);
+    libml::train_classification(knn,perceptrondata,perceptronlabels);
     auto end5 = chrono::steady_clock::now();
     cout<<"Training time  "<<(end5-start5).count()<<endl;
 	vector<vector<int>> knntestdata;
@@ -137,7 +138,7 @@ int main()
         auto start6 = chrono::steady_clock::now();
         pred_classes = libml::predict_classification(knn,knntestdata);
         auto end6 = chrono::steady_clock::now();
-        cout<<"Testing time  "<<(end5-start5).count()<<endl;
+        cout<<"Testing time  "<<(end6-start6).count()<<endl;
 	 //testing the KNN classifier
 	
 	vector<int> knntrainy={-1,1,1,1};

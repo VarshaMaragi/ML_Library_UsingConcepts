@@ -52,6 +52,8 @@ namespace libml {
                                 {
                                         throw std::invalid_argument( "No. of rows in Train data and Train Labels must be equal");
                                 }
+                                d=x;
+                                l=y;
                                 
                         };
 
