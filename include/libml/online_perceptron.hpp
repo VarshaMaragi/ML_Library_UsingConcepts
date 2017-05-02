@@ -54,7 +54,7 @@ namespace libml {
                         /**
                          * @brief Trains the perceptron on a stream of data and stores classifications
                          */
-                        void classify(Data_type &x, Label_type &y)
+                        void train(Data_type &x, Label_type &y)
                         {
                                 std::string s;
 
@@ -104,6 +104,11 @@ namespace libml {
                                 std::cout<<"-------------------------------------"<<std::endl;
 
                                 //cout<<"train the model\n";
+                        };
+
+                        std::vector<int> classify(Data_type &x)
+                        {
+                                std::cout<<"Classification";
                         }
         };
 } // namespace libml

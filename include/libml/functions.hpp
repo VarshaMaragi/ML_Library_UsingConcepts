@@ -69,7 +69,7 @@ template<typename T>
 void classify_online(T& lr, typename T::Data_type& test_data, typename T::Label_type& test_labels) requires OnlineLearningClassify<T>
 {
         std::cout << "Testing classify" << std::endl;
-        return lr.classify(test_data, test_labels);
+        lr.train(test_data, test_labels);
 }
 
 } // namespace libml

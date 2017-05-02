@@ -163,7 +163,8 @@ concept bool OnlineLearningClassify = requires()
         typename T::Data_type;
         typename T::Label_type;
 } && requires(T t,typename T::Data_type d,typename T::Label_type l) {
-        t.classify(d,l);
+        t.train(d,l);
+        t.classify(d);
 };
 
 } // namespace libml
